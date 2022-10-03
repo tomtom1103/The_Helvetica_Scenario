@@ -8,7 +8,12 @@ at Korea University.
 
 ## 1. Dimensionality Reduction
 
-TBA
+**Genetic Algorithm**
+[Genetic Algorithm Class](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GeneticAlgorithm.py)
+
+[Genetic Algorithm Jupyter tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GA_tutorial.ipynb)
+
+[Genetic Algorithm Markdown tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GA_tutorial.md)
 
 
 
