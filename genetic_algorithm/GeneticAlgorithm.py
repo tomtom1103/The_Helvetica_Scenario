@@ -51,7 +51,7 @@ class GeneticAlgorithm:
             self.population = self.initialization()
         
         acc_score = []
-        for mask in tqdm(self.population, desc='Calculating Fitness Score..'):
+        for mask in self.population:
             train_data = self.data[np.array(self.var_names)[mask]]
             x_train, x_test, y_train, y_test = train_test_split(train_data, self.target, test_size=0.2, random_state=0)
             sc = StandardScaler()
