@@ -11,10 +11,11 @@ at Korea University.
 **Genetic Algorithm**
 \
 \
-To run the Genetic Algorithm tutorial, clone/download the repository and run the [Genetic Algorithm Jupyter tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GA_tutorial.ipynb). The custom Class can be found in [Genetic Algorithm Class](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GeneticAlgorithm.py).
-\
+To run the Genetic Algorithm tutorial, clone/download the repository and run the [Genetic Algorithm Jupyter tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GA_tutorial.ipynb).
 
-[Genetic Algorithm Markdown tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GA_tutorial.md)
+The custom Class can be found in [Genetic Algorithm Class](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GeneticAlgorithm.py).
+
+The markdown version can be found here:[Genetic Algorithm Markdown tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GA_tutorial.md).
 
 
 
