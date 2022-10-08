@@ -106,11 +106,21 @@ $$
 Margin 을 최대화하는 hyperplane 을 찾으려 한다. 그렇다면 margin 을 계산 가능한 식으로 유도해야 하는데, 위 평행이동관계식으로 margin 을 $w$로 표현 할 수가 있다. 먼저 $\lambda$를 $w$로만 표현하면 다음과 같다.
 
 $$
-x^+ = x^- + \lambda w\\\\
+x^+ = x^- + \lambda w\\
+$$
+$$
 w^Tx^+ + b = 1\\
+$$
+$$
 w^T(x^-+\lambda w)+b=1\\
+$$
+$$
 w^Tx^-+b+\lambda w^Tw = 1\\
+$$
+$$
 -1 + \lambda w^Tw = 1\\\\
+$$
+$$
 \lambda = \frac 2 {w^Tw}
 $$
 
@@ -118,8 +128,14 @@ $$
 
 $$
 margin = ||x^+ - x^-||_2\\
+$$
+$$
 =||x^- + \lambda w - x^-||_2\\
+$$
+$$
 =||\lambda w||_2\\
+$$
+$$
 =\lambda \sqrt{w^Tw}\\
 $$
 
@@ -127,7 +143,11 @@ Margin 을 전개한 식 $\lambda \sqrt{w^Tw}$ 에 평행이동관계식에서 �
 
 $$
 margin = \frac 2 {w^Tw} \sqrt{w^Tw}\\
+$$
+$$
 = \frac 2 {\sqrt {w^Tw}}\\
+$$
+$$
 = \frac 2 {||w||_2}
 $$
 
@@ -191,6 +211,9 @@ Original Problem 의 목적식과 제약식이 Lagrangian Primal 에선 $\alpha$
 Primal formulation 또한 Original Problem 과 같이 QP 이기 때문에 Convex 하고 Continuous 하다. 0에서 최솟값을 갖기 때문에 $w, b$ 에 대해서 편미분을 해야한다.
 $$
 \frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial w}=0 \rightarrow w = \sum^n_{i=1}\alpha_iy_ix_i\\
+$$
+
+$$
 \frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial b}=0 \rightarrow \sum^n_{i=1}\alpha_iy_i=0
 $$
 이렇게 두가지 수식을 구할 수 있다. **되짚어보면 우리의 목적은 $w, b$ 를 구하는 것이다.** 첫번째 수식에 $w$ 에 대한 정의가 있는데, $\alpha$ 를 찾아야 하다. 그리고 두번째 수식에서 $\alpha$ 와 $y$ 의 곱의 합이 0이 되어야 한다는 것 또한 알게 되었다. 이 두가지 식을 다시 Primal formulation 에 대입을 하면 $\alpha$ 값을 최대화 시키는것이 목적인 dual 문제로 변환시킬 수 있다.
@@ -227,8 +250,9 @@ SVM 의 겨우엔, $w, b,a$ 가 Lagrangian dual 의 최적해가 되기 위해�
 
 1. Stationary
 
-> $\frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial w}=0 \rightarrow w = \sum^n_{i=1}\alpha_iy_ix_i\\
-> \frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial b}=0 \rightarrow \sum^n_{i=1}\alpha_iy_i=0$
+> $\frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial w}=0 \rightarrow w = \sum^n_{i=1}\alpha_iy_ix_i$
+
+> $\frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial b}=0 \rightarrow \sum^n_{i=1}\alpha_iy_i=0$
 
 2. Primal Feasibility
 
