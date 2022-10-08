@@ -139,7 +139,6 @@ $$
 
 $$
 min \  \frac 1 2 \mid\mid w \mid\mid ^2_2 \rightarrow Objective \ function
-
 $$
 
 ![Margin](../images/margin.png)
