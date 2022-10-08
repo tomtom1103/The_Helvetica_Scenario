@@ -18,6 +18,10 @@ To run the Genetic Algorithm tutorial, clone/download the repository and run the
 The custom Class can be found in [Genetic Algorithm Class](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GeneticAlgorithm.py).
 
 --------------------------
+
+## 2. Kernel Based Learning
+
+--------------------------
 The name 'Helvetica Scenario' derives from Ian Goodfellow's reference of the educational spoof 'Look Around You' in his 2014 GAN paper.
 It's when you put too much probability mass in the same place, causing a model collapse.
 

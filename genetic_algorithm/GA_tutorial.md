@@ -1,13 +1,15 @@
 # The Genetic Algorithm
 
-> Biomimicry is the emulation of the models, systems, and elements of nature for the purpose of solving complex human problems. The genetic algorithm, artificial neural networks, and the ant colony algorithm are some examples, to name a few.
+> Biomimicry 란 자연에서 볼 수 있는 디자인적 요소들이나 생물체의 특성들을 연구 및 모방하는 분야다. 딥러닝의 초기 모델인 인공신경망은 사람의 뇌의 Biomimicry 모델이며, 최적화 이론에선 유전 알고리즘, Ant Colony Algorithm, Particle Swarm Optimization 등이 대표적인 Biomimicry 방법론들이다.
 
 [The world is poorly designed. But copying nature helps.](https://www.youtube.com/watch?v=iMtXqTmfta0)
 
-For my first assignment for [Business Analytics](https://github.com/pilsung-kang/Business-Analytics-IME654-), I implemented the genetic algorithm using numpy as the main tensor calculator library, and sklearn for calculating fitness scores. The full Class can be found in `genetic_algorithm/GeneticAlgorithm.py`.
+유전 알고리즘은 환경에 특화되고 가장 우월한 개체만 다음 세대로 유전자를 남긴다는 다윈의 자연선택설에 기초한다. 열등한 유전자는 자연스럽게 도태되는 아이디어를 그대로 가져와 Selection, Crossover, Mutation 과정을 거쳐 가장 우월한 ‘유전자’, 즉 설명변수를 최종적으로 구하는 알고리즘이다.
+
+유전 알고리즘을 구현하기 위해 tensor 계산은 numpy, fitness score 계산은 scikit learn 을 사용했다. 전체 클래스는 `genetic_algorithm/GeneticAlgorithm.py` 에서 import 할 수 있다.
 
 ### 0. Data Loading
-For this implementation of the genetic algorithm, I used a very famous toy dataset - [The Red Wine Quality Dataset.](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009)
+사용한 데이터셋은 굉장히 유명한 toy dataset - [The Red Wine Quality Dataset](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009) 이다.
 
 
 
@@ -49,7 +51,20 @@ GA.df
 
 
 
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -241,13 +256,13 @@ GA.df
 
 
 
-It consists of 11 variables that describe the target variable, being the quality of wine, ranging from scores 3 through 8. To change the given task to binary classification, I used the `pd.cut()` method to split wines with `quality` over 5.5 into `1`, and under into `0`.
+해당 데이터셋은 와인의 퀄리티를 설명해주는 11개의 설명변수로 이루어져 있다. 와인의 퀄리티는 3~8의 점수로 기록되어 있으며, 해당 task 를 binary classification 으로 바꿔주기 위해 `pd.cut()` 을 통해 퀄리티가 5.5 이상은 `1`, 이하는 `0` 로 대체하였다.
 
 ### 1. Initialization
 
-The genetic algorithm consists of multiple hyperparameters, including the number of chromosomes (population), the fitness function, crossover mechanism, and the mutation rate.
+유전 알고리즘의 첫 단계는 초기값 설정, 혹은 Encoding 이다. 유전 알고리즘은 머신러닝 이외에도 다양한 분야에서 사용되기 때문에 Encoding 방법론은 분야마다 상이하지만, 차원축소에서 사용되는 유전 알고리즘에선 Binary Encoding 이 사용된다.
 
-For this example, I set the hyperparameters as following:
+하나의 chromosome 은 데이터셋이 가지고 있는 변수의 수 만큼 Gene 을 가지고 있으며, 처음 알고리즘을 시작할 때 랜덤하게 각 Gene 에 0 혹은 1 의 Binary 값이 주어진다. 알고리즘의 최종 output 은 하나의 chromosome 이며, 1로 활성화 되어있는 Gene 을 사용한다.
 
 
 ```python
@@ -258,9 +273,15 @@ print(GA)
     GeneticAlgorithm(pop_size=50, num_generations=20, mutation_rate=0.01, crossover_rate=0.5)
 
 
-The first step of GA is population initialization.
+- Population Initialization: Hyperparameter 로, 알고리즘에 사용할 chromosome 의 개수를 설정한다. 보통 50~100개의 chromosome 을 사용한다.
 
-It refers to how many chromosomes are to be processed in one training iteration. For this example, I used a population size of 50, which in return accounts for 50 boolean arrays with 11 values, corresponding to the number of variables in the dataset.
+- Fitness Function: 각 chromosome 의 성능, 혹은 ‘우월성’ 을 판별하기 위한 평가지표다. 학습하고자 하는 모델의 loss function 을 사용한다.
+
+- Crossover Mechanism: Hyperparameter 로, 몇개의 crossover point 로 알고리즘을 진행할지 정한다.
+
+- Mutation Rate: Hyperparameter 로, chromosome 의 gene 이 반대값으로 활성화/비활성화 될 확률이다. 보통 0.01 (1%) 를 사용한다.
+
+- Stopping Criteria: 알고리즘의 종료조건이다. 한 세대에서 다음 세대로 넘어갈때 fitness function 의 증가값이 특정 범주를 넘지 못하거나, 설정한 세대까지 진화를 했다면 멈추도록 설정 할 수 있다.
 
 
 ```python
@@ -282,7 +303,99 @@ GA.initialization()
      array([ True,  True, False, False,  True,  True,  True,  True, False,
             False, False]),
      array([ True,  True,  True, False, False,  True,  True, False,  True,
-             True, False]), ...]
+             True, False]),
+     array([False, False, False,  True, False, False,  True,  True,  True,
+             True,  True]),
+     array([False, False,  True,  True, False,  True,  True, False, False,
+            False, False]),
+     array([False, False,  True, False, False, False,  True, False, False,
+             True,  True]),
+     array([ True, False, False, False, False, False,  True,  True, False,
+             True, False]),
+     array([False, False, False, False,  True, False, False,  True, False,
+             True, False]),
+     array([ True, False, False, False, False,  True, False, False,  True,
+             True,  True]),
+     array([False,  True,  True, False,  True,  True,  True, False, False,
+             True, False]),
+     array([False, False,  True,  True, False,  True, False, False, False,
+            False, False]),
+     array([False, False,  True, False, False, False, False, False,  True,
+            False,  True]),
+     array([False, False, False, False, False,  True, False,  True,  True,
+             True,  True]),
+     array([False,  True,  True,  True,  True,  True,  True, False, False,
+             True,  True]),
+     array([False, False,  True, False, False, False,  True,  True, False,
+            False,  True]),
+     array([ True, False,  True,  True,  True, False, False, False, False,
+             True, False]),
+     array([False, False,  True, False,  True, False, False,  True, False,
+            False,  True]),
+     array([False,  True, False,  True,  True, False, False,  True,  True,
+            False, False]),
+     array([False, False,  True,  True,  True, False, False, False, False,
+             True, False]),
+     array([False,  True,  True, False,  True, False,  True,  True,  True,
+             True,  True]),
+     array([ True, False, False, False,  True, False, False,  True, False,
+            False,  True]),
+     array([False,  True,  True,  True,  True, False,  True, False,  True,
+             True,  True]),
+     array([False, False, False, False,  True, False,  True,  True,  True,
+            False,  True]),
+     array([False,  True,  True,  True, False,  True,  True, False, False,
+             True,  True]),
+     array([ True,  True,  True,  True,  True,  True,  True, False, False,
+            False,  True]),
+     array([ True, False,  True, False,  True, False, False,  True, False,
+             True, False]),
+     array([False,  True, False,  True, False,  True, False, False,  True,
+            False, False]),
+     array([ True,  True,  True,  True,  True,  True, False,  True, False,
+             True, False]),
+     array([ True,  True,  True,  True,  True, False,  True,  True,  True,
+            False,  True]),
+     array([ True, False, False,  True,  True, False, False, False,  True,
+            False, False]),
+     array([ True,  True, False, False, False,  True,  True, False, False,
+            False, False]),
+     array([False,  True, False, False,  True,  True, False, False,  True,
+             True, False]),
+     array([ True,  True,  True,  True,  True,  True, False, False, False,
+            False, False]),
+     array([ True, False,  True, False,  True, False, False, False, False,
+             True, False]),
+     array([ True,  True, False,  True,  True, False,  True, False, False,
+            False, False]),
+     array([ True, False,  True,  True,  True, False,  True,  True, False,
+            False,  True]),
+     array([ True, False, False,  True,  True,  True,  True, False,  True,
+            False, False]),
+     array([False,  True,  True, False,  True,  True, False,  True,  True,
+             True, False]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True,  True,  True,  True,  True, False, False,  True,
+            False, False]),
+     array([ True,  True,  True,  True, False, False, False,  True, False,
+             True, False]),
+     array([ True, False, False,  True, False, False,  True,  True, False,
+            False,  True]),
+     array([False, False, False, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True,  True, False, False, False,  True,  True, False, False,
+            False,  True]),
+     array([ True, False,  True,  True, False,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True, False, False, False,  True,  True, False,  True,
+            False, False]),
+     array([False,  True,  True, False,  True, False,  True, False, False,
+            False, False]),
+     array([False, False,  True, False, False, False,  True, False, False,
+            False, False]),
+     array([False,  True, False, False, False,  True, False,  True,  True,
+             True, False])]
 
 
 
@@ -301,9 +414,9 @@ np.random.randint(2, size=len(GA.var_names)).astype(bool)
 
 ### 2. Fitness Evaluation
 
-Once the population is initialized, fitness evaluation is performed for all chromosomes in the population.
+Fitness Evaluation 은 Hyperparameter 로 설정한 population 만큼 모델을 학습시키는 과정이다. 이때 데이터셋의 모든 변수를 사용하지 않고, 한 chromosome 에 의해 활성화 된 변수만 가지고 학습을 시킨다. 이때 지정한 fitness function 의 값 (fitness score)은 해당 chromosome 의 우월성을 나타낸다.
 
-For this example, I used a standard Random Forest classifier and its accuracy score.
+해당 예시에선 fitness function 으로 Random Forest classifier 을 사용하였으며, fitness score 은 accuracy 를 사용하였다.
 
 
 ```python
@@ -354,12 +467,54 @@ GA.fitness_evaluation()
      3: 0.765625,
      4: 0.80625,
      5: 0.684375,
-     ...,
+     6: 0.778125,
+     7: 0.740625,
+     8: 0.709375,
+     9: 0.7625,
+     10: 0.734375,
+     11: 0.653125,
+     12: 0.7375,
+     13: 0.7875,
+     14: 0.790625,
+     15: 0.75,
+     16: 0.725,
+     17: 0.75625,
+     18: 0.740625,
+     19: 0.73125,
+     20: 0.80625,
+     21: 0.728125,
+     22: 0.796875,
+     23: 0.746875,
+     24: 0.8,
+     25: 0.79375,
+     26: 0.75625,
+     27: 0.678125,
+     28: 0.7625,
+     29: 0.79375,
+     30: 0.621875,
+     31: 0.690625,
+     32: 0.734375,
+     33: 0.7,
+     34: 0.70625,
+     35: 0.7,
+     36: 0.8,
+     37: 0.684375,
+     38: 0.765625,
+     39: 0.8,
+     40: 0.715625,
+     41: 0.778125,
+     42: 0.771875,
+     43: 0.64375,
+     44: 0.76875,
+     45: 0.809375,
+     46: 0.690625,
+     47: 0.675,
+     48: 0.575,
      49: 0.73125}
 
 
 
-Each chromosome in the population is used to mask the variables used to train the RF model.
+Population 의 각 chromosome 은 RF를 학습시키는 데이터의 변수들을 마스킹 하는 용도로 사용 된다.
 
 
 ```python
@@ -371,6 +526,20 @@ train_data
 
 
 
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -466,9 +635,9 @@ train_data
 
 
 
-For the first chromosome, the RF model trains using only 6 variables.
+위 예시에서 볼 수 있듯이, 첫번째 chromosome 을 통해 RF 모델은 6개의 변수만 사용하여 학습을 진행한다.
 
-For each generation, the accuracy from the RF model is calculated and stored in `self.fitness_dict`, and the chromosome with the highest accuracy is stored in `self.best_chromosome_score`.
+각 generation 에서 계산되는 accuracy score 은 `self.fitness_dict` 에 저장되며, 이중 가장 높은 점수를 얻은 chromosome 은 `self.best_chromosome_score` 에 저장된다.
 
 
 ```python
@@ -484,14 +653,56 @@ GA.fitness_dict
      3: 0.765625,
      4: 0.80625,
      5: 0.684375,
-     ...
+     6: 0.778125,
+     7: 0.740625,
+     8: 0.709375,
+     9: 0.7625,
+     10: 0.734375,
+     11: 0.653125,
+     12: 0.7375,
+     13: 0.7875,
+     14: 0.790625,
+     15: 0.75,
+     16: 0.725,
+     17: 0.75625,
+     18: 0.740625,
+     19: 0.73125,
+     20: 0.80625,
+     21: 0.728125,
+     22: 0.796875,
+     23: 0.746875,
+     24: 0.8,
+     25: 0.79375,
+     26: 0.75625,
+     27: 0.678125,
+     28: 0.7625,
+     29: 0.79375,
+     30: 0.621875,
+     31: 0.690625,
+     32: 0.734375,
+     33: 0.7,
+     34: 0.70625,
+     35: 0.7,
+     36: 0.8,
+     37: 0.684375,
+     38: 0.765625,
+     39: 0.8,
+     40: 0.715625,
+     41: 0.778125,
+     42: 0.771875,
+     43: 0.64375,
+     44: 0.76875,
+     45: 0.809375,
+     46: 0.690625,
+     47: 0.675,
+     48: 0.575,
      49: 0.73125}
 
 
 
 ### 3. Selection
 
-Once fitness evaluation has been conducted for all chromosomes in the population, a selection criterion determines which chromosome in the population is fit enough to pass on its genes (e.g. its variables) to the next generation. 
+Population 만큼 모델이 학습된 후 각 모델의 fitness function 까지 산출 되었다면, Selection 은 다음 세대로 gene 을 넘길 chromosome 을 선택하는 단계다.
 
 
 ```python
@@ -528,11 +739,100 @@ GA.probabilistic_selection()
              True, False]),
      array([ True, False, False, False,  True, False, False,  True, False,
             False,  True]),
-             ...]
+     array([False, False, False,  True, False, False,  True,  True,  True,
+             True,  True]),
+     array([ True, False,  True,  True,  True, False, False, False, False,
+             True, False]),
+     array([ True, False, False,  True, False, False,  True,  True, False,
+            False,  True]),
+     array([False, False, False, False, False,  True, False,  True,  True,
+             True,  True]),
+     array([False,  True,  True, False,  True, False,  True, False, False,
+            False, False]),
+     array([ True,  True, False, False, False,  True,  True, False,  True,
+            False, False]),
+     array([False,  True,  True, False,  True,  True,  True, False, False,
+             True, False]),
+     array([False, False,  True,  True, False,  True, False, False, False,
+            False, False]),
+     array([False, False, False, False, False,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([False, False,  True, False, False, False,  True, False, False,
+            False, False]),
+     array([False,  True, False, False, False,  True, False,  True,  True,
+             True, False]),
+     array([False, False, False,  True, False, False,  True,  True,  True,
+             True,  True]),
+     array([ True, False, False, False, False, False,  True,  True, False,
+             True, False]),
+     array([False,  True,  True,  True,  True, False,  True, False,  True,
+             True,  True]),
+     array([ True, False,  True,  True, False,  True, False,  True,  True,
+             True,  True]),
+     array([False, False, False, False,  True, False,  True,  True,  True,
+            False,  True]),
+     array([ True,  True, False, False,  True,  True,  True,  True, False,
+            False, False]),
+     array([ True, False, False,  True,  True, False, False, False,  True,
+            False, False]),
+     array([False,  True,  True,  True,  True, False,  True, False,  True,
+             True,  True]),
+     array([False, False,  True, False,  True, False, False,  True, False,
+            False,  True]),
+     array([False, False, False, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True,  True,  True,  True,  True,  True, False, False,  True,
+            False, False]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([ True, False, False, False, False, False,  True,  True, False,
+             True, False]),
+     array([ True,  True, False, False, False,  True,  True, False, False,
+            False,  True]),
+     array([ True,  True,  True, False, False,  True,  True, False,  True,
+             True, False]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True,  True,  True,  True,  True, False,  True, False,
+             True, False]),
+     array([False, False,  True, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True, False, False, False, False,  True, False, False,  True,
+             True,  True]),
+     array([ True, False, False, False, False, False, False,  True, False,
+             True,  True]),
+     array([ True, False, False, False, False, False, False,  True, False,
+             True,  True]),
+     array([ True,  True, False, False,  True,  True,  True,  True, False,
+            False, False]),
+     array([False, False, False,  True, False, False,  True,  True,  True,
+             True,  True]),
+     array([ True,  True,  True,  True,  True, False,  True,  True,  True,
+            False,  True]),
+     array([ True,  True, False, False, False,  True,  True, False,  True,
+            False, False]),
+     array([ True,  True,  True,  True,  True,  True, False, False,  True,
+            False, False]),
+     array([False,  True,  True,  True,  True,  True,  True, False, False,
+             True,  True]),
+     array([ True,  True,  True,  True, False, False, False,  True, False,
+             True, False]),
+     array([ True,  True, False, False, False,  True,  True, False, False,
+            False,  True]),
+     array([False, False,  True, False, False, False,  True, False, False,
+            False, False]),
+     array([False, False,  True,  True, False,  True, False, False, False,
+            False, False]),
+     array([False, False, False, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True, False, False, False, False, False, False,  True, False,
+             True,  True])]
 
 
 
-First, the values of the fitness scores are called into a list.
+먼저, Chromosome 들의 fitness score 을 리스트로 불러온다.
 
 
 ```python
@@ -549,22 +849,64 @@ fitness_score
      0.765625,
      0.80625,
      0.684375,
-     ...,
+     0.778125,
+     0.740625,
+     0.709375,
+     0.7625,
+     0.734375,
+     0.653125,
+     0.7375,
+     0.7875,
+     0.790625,
+     0.75,
+     0.725,
+     0.75625,
+     0.740625,
+     0.73125,
+     0.80625,
+     0.728125,
+     0.796875,
+     0.746875,
+     0.8,
+     0.79375,
+     0.75625,
+     0.678125,
+     0.7625,
+     0.79375,
+     0.621875,
+     0.690625,
+     0.734375,
+     0.7,
+     0.70625,
+     0.7,
+     0.8,
+     0.684375,
+     0.765625,
+     0.8,
+     0.715625,
+     0.778125,
+     0.771875,
+     0.64375,
+     0.76875,
+     0.809375,
+     0.690625,
+     0.675,
+     0.575,
      0.73125]
 
 
 
-Chromosome selection can be performed in 2 ways:
+Selection 단계에서 두가지 방법으로 Chromosome 을 선택 할 수 있다.
 
 1. Deterministic selection
-- Select only the top N% of chromosomes
+
+Fitness function 상 상위 N% 의 chromosome 만 선택한다. 이때 하등한 chromosome (100-N)% 는 절대 선택이 되지 않는다.
 
 2. Probabilistic selection
-- Fitness score is used as a weight for each chromosome
 
-I chose to implement probabilistic selection for this example, since it gives the chromosomes with low scores a slight chance to be selected, henece acquiring diversity.
+각 chromosome 의 fitness function 을 가중치로 부여하고 선택하는 방법이다. 이로써 모든 chromosome 은 아무리 열등하더라도 다음 세대로 gene 을 넘길 가능성이 생긴다. 예로, 3개의 chromosome A,B,C 가 있고 각각의 fitness function 은 3, 1, 2 다. 그렇다면 A 가 선택될 확률은 3/6, B 가 선택될 확률은 1/6, C 가 선택될 확률은 2/6이 된다. Probabilistic selection 을 사용한다면 Deterministic Selection 에서 정한 것 처럼 총 population 의 몇% 를 선택할지 또한 정해야 한다.
 
-I passed each score into the softmax function, which normalizes all fitness scores into a probability.
+해당 코드에선 Probabilistic selection 을 적용하였으며, 각 Chromosome 의 fitness score 을 softmax 함수에 넣어 선택될 확률을 설정하였다.
 
 
 ```python
@@ -588,7 +930,7 @@ fitness_score
 
 
 
-I used the `np.random.choice()` method to sample each chromosome **With Replacement**, using the softmax values of the fitness score as the probability for each chromosome to be sampled.
+`np.random.choice()` 메서드에 Softmax 함수의 출력을 확률인자로 주어 Chromosome 을 복원추출하였다.
 
 
 ```python
@@ -605,11 +947,11 @@ selection
 
 
 
-A good practice in the genetic algorithm is to implement **Elitism**.
+유전 알고리즘을 구현 할 때 elitism 이란 장치를 사용하는 경우도 있다.
 
-For each generation, there is no guarantee that the children chromosomes are better than their respective parent chromosomes. So for safety, N chromosomes with the best fitness scores are deterministicly selected in the selection process.
+각 세대가 지나면서 생성되는 자식 chromosome 이 부모 chromosome 보다 우월할 것이란 보장은 없다. 그렇기에 가장 높은 fitness score 을 가진 chromosome 을 확정적으로 다음 세대에 넘기는 것이 elitism 이다.
 
-For my example, I chose `elitism = 1`, which means that the chromosome with the best fitness score in its population is guaranteed to be passed on.
+해당 코드에선 `elitism=1` 을 적용하였다.
 
 
 ```python
@@ -627,11 +969,11 @@ for choice in selection[:-1]:
 
 ### 4. Crossover
 
-Once the parent chromosomes have been chosen either through deterministic or probabilistic selection, 2 parent chromosomes exchange their genes in order to produce 2 child chromosomes.
+이전 단계에서 선택된 부모 chromosome 들은 crossover 단계에서 자식 chromosome 을 생성한다.
 
-The crossover point, a hyperparameter, determines the number of "slices" that are made in the parent chromosome. However, it is considered good practice to use `crossover_rate` instead of `crossover_point`.
+Initialization 단계에서 지정한 hyperparameter 인 crossover point 에 따라 각 부모 chromosome 에 분기가 생기며, 해당 분기 속 gene 들이 서로 바꿔치기 되며 child chromosome 이 생성된다. Crossover point 는 1개부터 n개로 설정 할 수 있으며, 만약 n개로 설정했다면 gene 의 개수만큼 난수를 담은 array 를 생성한다. Array 의 index 값이 0.5가 넘는다면 chromosome 의 해당 index 의 gene 을 부모끼리 교환한다. 실제로 Crossover point 는 n 개로 설정하는 경우가 많다.
 
-Crossover rate determines the probability of gene crossover given to the parent chromosomes' genes. For my example, I used `crossover_rate=0.5` meaning that each gene has a 50% chance of crossing over.
+만약 Crossover point 를 n 개로 설정한다면, 각 gene 이 crossover 될 확률을 지정해주어야 한다. 해당 코드에선 이를 `crossover_rate=0.5` 로 설정하였다.
 
 
 ```python
@@ -672,11 +1014,101 @@ GA.crossover()
      array([False, False,  True,  True, False,  True, False, False, False,
             False, False]),
      array([False,  True, False, False,  True,  True, False, False,  True,
-             True, False]), ...]
+             True, False]),
+     array([ True, False, False, False,  True, False, False,  True, False,
+            False,  True]),
+     array([False, False, False,  True, False, False,  True,  True,  True,
+             True,  True]),
+     array([ True, False,  True,  True,  True, False, False, False, False,
+             True, False]),
+     array([ True, False, False,  True, False, False,  True,  True, False,
+            False,  True]),
+     array([False,  True,  True, False,  True, False,  True, False, False,
+            False, False]),
+     array([False, False, False, False, False,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True, False, False, False,  True,  True, False,  True,
+            False, False]),
+     array([False,  True,  True, False,  True,  True,  True, False, False,
+             True, False]),
+     array([False, False,  True,  True, False,  True, False, False, False,
+            False, False]),
+     array([False, False, False, False, False,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([False, False,  True, False, False, False,  True, False, False,
+            False, False]),
+     array([False,  True, False,  True, False, False,  True,  True,  True,
+             True,  True]),
+     array([False, False, False, False, False,  True, False,  True,  True,
+             True, False]),
+     array([ True, False, False, False, False, False,  True,  True,  True,
+             True,  True]),
+     array([False,  True,  True,  True,  True, False,  True, False, False,
+             True, False]),
+     array([ True, False,  True,  True, False,  True, False,  True,  True,
+             True,  True]),
+     array([False, False, False, False,  True, False,  True,  True,  True,
+            False,  True]),
+     array([ True, False, False,  True,  True, False, False, False,  True,
+            False, False]),
+     array([ True,  True, False, False,  True,  True,  True,  True, False,
+            False, False]),
+     array([False,  True,  True,  True,  True, False,  True, False,  True,
+             True,  True]),
+     array([False, False,  True, False,  True, False, False,  True, False,
+            False,  True]),
+     array([False, False, False,  True,  True,  True, False, False,  True,
+            False, False]),
+     array([ True,  True,  True, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([ True, False, False, False, False, False,  True,  True, False,
+             True, False]),
+     array([ True,  True, False, False, False,  True,  True, False,  True,
+             True, False]),
+     array([ True,  True,  True, False, False,  True,  True, False, False,
+            False,  True]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True,  True,  True,  True,  True, False,  True, False,
+             True, False]),
+     array([False, False,  True, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True, False, False, False, False,  True, False, False,  True,
+             True,  True]),
+     array([ True, False, False, False, False, False, False,  True, False,
+             True,  True]),
+     array([ True, False, False, False, False, False, False,  True, False,
+             True,  True]),
+     array([ True,  True, False, False,  True,  True,  True,  True, False,
+            False, False]),
+     array([False, False, False,  True, False, False,  True,  True,  True,
+             True,  True]),
+     array([ True,  True, False, False, False,  True,  True, False,  True,
+            False, False]),
+     array([ True,  True,  True,  True,  True, False,  True,  True,  True,
+            False,  True]),
+     array([ True,  True,  True,  True,  True,  True, False, False,  True,
+            False, False]),
+     array([False,  True,  True,  True,  True,  True,  True, False, False,
+             True,  True]),
+     array([ True,  True,  True,  True, False, False, False,  True, False,
+            False,  True]),
+     array([ True,  True, False, False, False,  True,  True, False, False,
+             True, False]),
+     array([False, False,  True, False, False, False,  True, False, False,
+            False, False]),
+     array([False, False,  True,  True, False,  True, False, False, False,
+            False, False]),
+     array([False, False, False, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True, False, False, False, False, False, False,  True, False,
+             True,  True])]
 
 
-
-I used the `np.random.rand()` method to determine wheter each pair of parent chromosomes were to be crossed over. If the random number initialized was under `crossover_rate=0.5`, a random crossover point is initialized.
 
 
 ```python
@@ -693,13 +1125,9 @@ crossover_point
 
 ### 5. Mutation
 
-Mutation is another genetic operator that is taken from biomimicry.
+Crossover 를 통해 child chromosome 이 생성되었다면, 아주 낮은 확률로 mutation 이 일어난다.
 
-After children chromosomes are made through the crossover process, a very small probability is given to each chromosome where its binary gene is flipped.
-
-Mutation allows an entirely new gene value to be added to the population, hence acting as a tool to escape the local optima. However, a large mutation rate can drastically increase the time for the algorithm to converge.
-
-For my example, I chose `mutation_rate=0.01`.
+앞서 설정한 hyperparameter 에 따라 각 Gene 의 값이 반대값으로 바뀌도록 장치를 설정한 것인데, 이는 각 chromosome 이 local optima 에서 벗어날 기회를 제공한다. 이때 mutation rate 을 너무 크게 설정한다면 convergence time 이 늘어날 수도 있다. 보통 mutation rate 은 0.01 로 설정한다.
 
 
 ```python
@@ -740,12 +1168,98 @@ GA.mutation()
             False,  True]),
      array([False, False, False,  True, False, False,  True,  True,  True,
              True,  True]),
+     array([ True, False,  True,  True,  True, False, False, False, False,
+             True, False]),
+     array([ True, False, False,  True, False, False,  True,  True, False,
+            False,  True]),
+     array([False,  True,  True, False,  True, False,  True, False, False,
+            False, False]),
+     array([False, False, False, False, False,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True, False, False, False,  True,  True, False,  True,
+            False, False]),
+     array([False,  True,  True, False,  True,  True,  True, False, False,
+             True, False]),
+     array([False, False,  True,  True, False,  True, False, False, False,
+            False, False]),
+     array([False, False, False, False, False,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([False, False,  True, False, False, False,  True, False, False,
+            False, False]),
+     array([False,  True, False,  True, False, False,  True,  True,  True,
+             True,  True]),
+     array([False, False, False, False, False,  True, False,  True,  True,
+             True, False]),
+     array([ True, False, False, False, False, False,  True,  True,  True,
+             True,  True]),
+     array([False,  True,  True,  True,  True, False,  True, False, False,
+             True, False]),
+     array([ True, False,  True,  True, False,  True, False,  True,  True,
+             True,  True]),
+     array([False, False, False, False,  True, False,  True,  True,  True,
+            False,  True]),
+     array([ True, False, False,  True,  True, False, False, False,  True,
+            False, False]),
+     array([ True,  True, False, False,  True,  True,  True,  True, False,
+            False, False]),
+     array([False,  True,  True,  True,  True, False,  True, False,  True,
+             True,  True]),
+     array([False, False,  True, False,  True, False, False,  True, False,
+            False,  True]),
+     array([False, False, False,  True,  True,  True, False, False,  True,
+            False, False]),
+     array([ True,  True,  True, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([ True, False, False, False, False, False,  True,  True, False,
+             True, False]),
+     array([ True,  True, False, False, False,  True,  True, False,  True,
+             True, False]),
+     array([ True,  True,  True, False, False,  True,  True, False, False,
+            False,  True]),
+     array([ True,  True, False, False,  True,  True, False,  True,  True,
+             True,  True]),
+     array([ True,  True,  True,  True,  True,  True, False,  True, False,
+             True, False]),
+     array([False, False,  True, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True, False, False, False, False,  True, False, False,  True,
+             True,  True]),
      array([ True, False, False, False, False, False, False,  True, False,
-             True,  True]), ...]
+             True,  True]),
+     array([ True, False, False, False, False, False, False,  True, False,
+             True,  True]),
+     array([ True,  True, False, False,  True,  True,  True,  True, False,
+            False, False]),
+     array([False, False, False,  True, False, False,  True,  True,  True,
+             True,  True]),
+     array([ True,  True, False, False, False,  True,  True, False,  True,
+            False, False]),
+     array([ True,  True,  True,  True,  True, False,  True,  True,  True,
+            False,  True]),
+     array([ True,  True,  True,  True,  True,  True, False, False,  True,
+            False, False]),
+     array([False,  True,  True,  True,  True,  True,  True, False, False,
+             True,  True]),
+     array([ True,  True,  True,  True, False, False, False,  True, False,
+            False,  True]),
+     array([ True,  True, False, False, False,  True,  True, False, False,
+             True, False]),
+     array([False, False,  True, False, False, False,  True, False, False,
+            False, False]),
+     array([False, False,  True,  True, False,  True, False, False, False,
+            False, False]),
+     array([False, False, False, False, False, False, False, False,  True,
+            False,  True]),
+     array([ True, False, False, False, False, False, False,  True, False,
+             True,  True])]
 
 
 
-Since the mutation rate is so small, mutation rarely happens. But in order to show that the mutation function truly works, the next example is an instance of the `mutation_rate` set to `0.9`.
+Mutation rate 가 매우 작기 때문에 아주 낮은 확률로 변이가 일어난다. 아래의 예시는 `mutation_rate` 를 `0.9`로 설정하여 Mutation 이 일어나도록 유도한 instance 다.
 
 
 ```python
@@ -776,11 +1290,15 @@ for i, j in zip(before_mutation, after_mutation):
     False
 
 
-For 10 chromosomes in the children population, 9 have mutated (hence the boolean operator `i==j.all()` being `False`) and 1 hasn't.
+위 예시에선 10개의 chromosome 중 9개가 변이되었다.
 
 ### Running the Algorithm
 
-The full algorithm can be run using the `run_algorithm()` method in the `GeneticAlgorithm` class, and its result can be shown using the `plot()` method.
+Initialization 후 학습이 진행되며 fitness value 에 따라 selection 을 진행 한 뒤, crossover 와 mutation 까지의 과정을 one iteration 으로 계산한다.
+
+유전 알고리즘의 종료 조건은 몇번의 iteration 이거나 fitness value 의 증가분이기 때문에, 언젠간 알고리즘은 종료된다.
+
+이후 최종적으로 남은 chromosome 들 중 가장 높은 fitness value 를 가진 chromosome 을 선택해 활성화된 gene 을 설명변수로 사용함으로써 차원축소가 완료된다.
 
 
 ```python
@@ -856,23 +1374,338 @@ GA.plot()
 
 
     
-![png](GA_tutorial_files/GA_tutorial_44_0.png)
+![png](GA_tutorial_files/GA_tutorial_43_0.png)
     
 
 
-It can be seen that as the generation increases, the accuracy of the best chromosome of each generation has a rising trend. However, It seems that the accuracy score has a clear ceiling of about 0.822. This can be due to a number of reasons:
+위 그래프를 보면 세대가 진행 될 수록 accuracy 가 점점 증가하는 것을 볼 수 있다. 하지만 `0.822` 을 넘지 못하는 것을 볼 수 있는데, 다음과 같은 이유들 때문이라 예측한다.
 
 1. The dataset.
-The dataset itself is a very small dataset. It has only 1599 samples and 11 variables that describe the target variable. Since the genetic algorithm decides on which variable to use for its fitness evaluation, 11 variables don't have a lot of diversity.
+
+1599개의 샘플과 11개의 설명변수를 가진 아주 작은 데이터셋에 대해 알고리즘을 진행하였는데, 유전 알고리즘은 본질적으로 차원축소 방법론이기 때문에 11개 이하의 변수들이 큰 설명력을 갖지 못할 수 있다.
 
 2. Correlation between variables.
-From the correlation matrix below, it can be seen that not much variables have a high correlation. If many variables had higher correlations, the genetic algorithm may have found better combinations of variables that increase the accuracy overall.
+
+아래의 상관계수행렬을 보면, 높은 상관관계를 갖는 변수는 없다. 만약 높은 상관계수를 가진 변수들의 쌍이 많았다면, 해당 변수들의 쌍 중 하나를 사용하지 않고 알고리즘이 진행되었을 가능성이 높다.
+
 
 ```python
 corr = GA.data.corr()
 corr.style.background_gradient(cmap='coolwarm')
 ```
 
+
+
+
+<style type="text/css">
+#T_66d25_row0_col0, #T_66d25_row1_col1, #T_66d25_row2_col2, #T_66d25_row3_col3, #T_66d25_row4_col4, #T_66d25_row5_col5, #T_66d25_row6_col6, #T_66d25_row7_col7, #T_66d25_row8_col8, #T_66d25_row9_col9, #T_66d25_row10_col10 {
+  background-color: #b40426;
+  color: #f1f1f1;
+}
+#T_66d25_row0_col1, #T_66d25_row9_col1 {
+  background-color: #779af7;
+  color: #f1f1f1;
+}
+#T_66d25_row0_col2 {
+  background-color: #f08a6c;
+  color: #f1f1f1;
+}
+#T_66d25_row0_col3, #T_66d25_row4_col10 {
+  background-color: #7699f6;
+  color: #f1f1f1;
+}
+#T_66d25_row0_col4 {
+  background-color: #98b9ff;
+  color: #000000;
+}
+#T_66d25_row0_col5, #T_66d25_row0_col8, #T_66d25_row1_col2, #T_66d25_row1_col9, #T_66d25_row2_col1, #T_66d25_row7_col10, #T_66d25_row8_col0, #T_66d25_row8_col3, #T_66d25_row8_col4, #T_66d25_row10_col6, #T_66d25_row10_col7 {
+  background-color: #3b4cc0;
+  color: #f1f1f1;
+}
+#T_66d25_row0_col6 {
+  background-color: #516ddb;
+  color: #f1f1f1;
+}
+#T_66d25_row0_col7 {
+  background-color: #f18d6f;
+  color: #f1f1f1;
+}
+#T_66d25_row0_col9, #T_66d25_row3_col8 {
+  background-color: #b1cbfc;
+  color: #000000;
+}
+#T_66d25_row0_col10 {
+  background-color: #9bbcff;
+  color: #000000;
+}
+#T_66d25_row1_col0, #T_66d25_row3_col4, #T_66d25_row5_col3 {
+  background-color: #8db0fe;
+  color: #000000;
+}
+#T_66d25_row1_col3, #T_66d25_row2_col5 {
+  background-color: #536edd;
+  color: #f1f1f1;
+}
+#T_66d25_row1_col4 {
+  background-color: #90b2fe;
+  color: #000000;
+}
+#T_66d25_row1_col5 {
+  background-color: #6180e9;
+  color: #f1f1f1;
+}
+#T_66d25_row1_col6 {
+  background-color: #86a9fc;
+  color: #f1f1f1;
+}
+#T_66d25_row1_col7 {
+  background-color: #aec9fc;
+  color: #000000;
+}
+#T_66d25_row1_col8 {
+  background-color: #e8d6cc;
+  color: #000000;
+}
+#T_66d25_row1_col10 {
+  background-color: #7a9df8;
+  color: #f1f1f1;
+}
+#T_66d25_row2_col0 {
+  background-color: #ec8165;
+  color: #f1f1f1;
+}
+#T_66d25_row2_col3, #T_66d25_row3_col9, #T_66d25_row5_col4 {
+  background-color: #80a3fa;
+  color: #f1f1f1;
+}
+#T_66d25_row2_col4, #T_66d25_row7_col1, #T_66d25_row7_col4, #T_66d25_row10_col0 {
+  background-color: #b6cefa;
+  color: #000000;
+}
+#T_66d25_row2_col6, #T_66d25_row7_col8 {
+  background-color: #7b9ff9;
+  color: #f1f1f1;
+}
+#T_66d25_row2_col7 {
+  background-color: #eed0c0;
+  color: #000000;
+}
+#T_66d25_row2_col8, #T_66d25_row9_col3 {
+  background-color: #5470de;
+  color: #f1f1f1;
+}
+#T_66d25_row2_col9 {
+  background-color: #d1dae9;
+  color: #000000;
+}
+#T_66d25_row2_col10, #T_66d25_row6_col1, #T_66d25_row7_col3 {
+  background-color: #c1d4f4;
+  color: #000000;
+}
+#T_66d25_row3_col0 {
+  background-color: #d6dce4;
+  color: #000000;
+}
+#T_66d25_row3_col1 {
+  background-color: #b2ccfb;
+  color: #000000;
+}
+#T_66d25_row3_col2, #T_66d25_row5_col8 {
+  background-color: #cedaeb;
+  color: #000000;
+}
+#T_66d25_row3_col5 {
+  background-color: #9dbdff;
+  color: #000000;
+}
+#T_66d25_row3_col6, #T_66d25_row6_col0 {
+  background-color: #abc8fd;
+  color: #000000;
+}
+#T_66d25_row3_col7 {
+  background-color: #edd2c3;
+  color: #000000;
+}
+#T_66d25_row3_col10 {
+  background-color: #b3cdfb;
+  color: #000000;
+}
+#T_66d25_row4_col0 {
+  background-color: #d3dbe7;
+  color: #000000;
+}
+#T_66d25_row4_col1 {
+  background-color: #bfd3f6;
+  color: #000000;
+}
+#T_66d25_row4_col2 {
+  background-color: #d9dce1;
+  color: #000000;
+}
+#T_66d25_row4_col3 {
+  background-color: #6384eb;
+  color: #f1f1f1;
+}
+#T_66d25_row4_col5 {
+  background-color: #6687ed;
+  color: #f1f1f1;
+}
+#T_66d25_row4_col6 {
+  background-color: #7ea1fa;
+  color: #f1f1f1;
+}
+#T_66d25_row4_col7 {
+  background-color: #d4dbe6;
+  color: #000000;
+}
+#T_66d25_row4_col8, #T_66d25_row5_col9, #T_66d25_row6_col4 {
+  background-color: #8caffe;
+  color: #000000;
+}
+#T_66d25_row4_col9, #T_66d25_row9_col4 {
+  background-color: #dddcdc;
+  color: #000000;
+}
+#T_66d25_row5_col0 {
+  background-color: #a3c2fe;
+  color: #000000;
+}
+#T_66d25_row5_col1 {
+  background-color: #afcafc;
+  color: #000000;
+}
+#T_66d25_row5_col2, #T_66d25_row5_col7 {
+  background-color: #a5c3fe;
+  color: #000000;
+}
+#T_66d25_row5_col6 {
+  background-color: #f6a385;
+  color: #000000;
+}
+#T_66d25_row5_col10, #T_66d25_row9_col8 {
+  background-color: #9abbff;
+  color: #000000;
+}
+#T_66d25_row6_col2 {
+  background-color: #b9d0f9;
+  color: #000000;
+}
+#T_66d25_row6_col3 {
+  background-color: #93b5fe;
+  color: #000000;
+}
+#T_66d25_row6_col5 {
+  background-color: #f7a889;
+  color: #000000;
+}
+#T_66d25_row6_col7 {
+  background-color: #bad0f8;
+  color: #000000;
+}
+#T_66d25_row6_col8 {
+  background-color: #b5cdfa;
+  color: #000000;
+}
+#T_66d25_row6_col9 {
+  background-color: #89acfd;
+  color: #000000;
+}
+#T_66d25_row6_col10, #T_66d25_row8_col5 {
+  background-color: #799cf8;
+  color: #f1f1f1;
+}
+#T_66d25_row7_col0 {
+  background-color: #ed8366;
+  color: #f1f1f1;
+}
+#T_66d25_row7_col2 {
+  background-color: #f1cdba;
+  color: #000000;
+}
+#T_66d25_row7_col5, #T_66d25_row8_col6 {
+  background-color: #5e7de7;
+  color: #f1f1f1;
+}
+#T_66d25_row7_col6 {
+  background-color: #85a8fc;
+  color: #f1f1f1;
+}
+#T_66d25_row7_col9 {
+  background-color: #a7c5fe;
+  color: #000000;
+}
+#T_66d25_row8_col1 {
+  background-color: #dedcdb;
+  color: #000000;
+}
+#T_66d25_row8_col2 {
+  background-color: #3c4ec2;
+  color: #f1f1f1;
+}
+#T_66d25_row8_col7 {
+  background-color: #5a78e4;
+  color: #f1f1f1;
+}
+#T_66d25_row8_col9 {
+  background-color: #4a63d3;
+  color: #f1f1f1;
+}
+#T_66d25_row8_col10 {
+  background-color: #d5dbe5;
+  color: #000000;
+}
+#T_66d25_row9_col0 {
+  background-color: #e0dbd8;
+  color: #000000;
+}
+#T_66d25_row9_col2 {
+  background-color: #ead4c8;
+  color: #000000;
+}
+#T_66d25_row9_col5 {
+  background-color: #7396f5;
+  color: #f1f1f1;
+}
+#T_66d25_row9_col6 {
+  background-color: #7da0f9;
+  color: #f1f1f1;
+}
+#T_66d25_row9_col7 {
+  background-color: #cad8ef;
+  color: #000000;
+}
+#T_66d25_row9_col10 {
+  background-color: #bed2f6;
+  color: #000000;
+}
+#T_66d25_row10_col1 {
+  background-color: #84a7fc;
+  color: #f1f1f1;
+}
+#T_66d25_row10_col2 {
+  background-color: #c9d7f0;
+  color: #000000;
+}
+#T_66d25_row10_col3 {
+  background-color: #5f7fe8;
+  color: #f1f1f1;
+}
+#T_66d25_row10_col4 {
+  background-color: #445acc;
+  color: #f1f1f1;
+}
+#T_66d25_row10_col5 {
+  background-color: #506bda;
+  color: #f1f1f1;
+}
+#T_66d25_row10_col8 {
+  background-color: #e4d9d2;
+  color: #000000;
+}
+#T_66d25_row10_col9 {
+  background-color: #97b8ff;
+  color: #000000;
+}
 </style>
 <table id="T_66d25">
   <thead>
@@ -1051,8 +1884,3 @@ corr.style.background_gradient(cmap='coolwarm')
 
 
 
-
-
-```python
-
-```
