@@ -226,16 +226,16 @@ Primal 을 Dual 로 바꾸는것은 어렵지 않다. 편미분을 통해 얻은
 
 > $Primal: \min_{w,b} \mathcal{L}(w,b,a) = \frac 1 2 \mid\mid w \mid\mid ^2_2 - \sum \alpha_i(y_i(w^Tx_i+b)-1)$
 >
-> $ w = \sum^n_{i=1} \alpha_i y_i x_i$
+> $w = \sum^n_{i=1} \alpha_i y_i x_i$
 >
-> $\sum^n_{i=1} \alpha_i y_i=0$
+> $\sum \alpha_i y_i=0$
 
 
-> $Dual: \max_\alpha \sum^n_{i=1} \alpha_i - \frac 1 2 \sum^n_{i=1} \sum^n_{j=1} \alpha_i \alpha_j y_i y_j x^T_i x_j$
+> $Dual: \max_\alpha \sum \alpha_i - \frac 1 2 \sum \sum \alpha_i \alpha_j y_i y_j x^T_i x_j$
 >
-> $s.t \ \sum^n_{i=1}\alpha_i y_i = 0, \ \alpha_i \geq 0, \ i=1,2,...,n$
+> $s.t \ \sum \alpha_i y_i = 0, \ \alpha_i \geq 0, \ i=1,2,...,n$
 
-위 Dual 문제도 Original Problem, Primal formulation 과 동일한 QP다. 그렇기 때문에 목적식을 만족시키는 $\alpha$ 는 하나만 존재한다. $\alpha$ 를 구하면 $w = \sum^n_{i=1}\alpha_iy_ix_i\\$ 를 통해 $w$ 를 구할 수 있다. 하지만 위에서 언급한 것 처럼 QP 문제에서 제약식이 연립부등식이면 KKT 조건을 만족시켜야 한다.
+위 Dual 문제도 Original Problem, Primal formulation 과 동일한 QP다. 그렇기 때문에 목적식을 만족시키는 $\alpha$ 는 하나만 존재한다. $\alpha$ 를 구하면 $w = \sum \alpha_iy_ix_i\\$ 를 통해 $w$ 를 구할 수 있다. 하지만 위에서 언급한 것 처럼 QP 문제에서 제약식이 연립부등식이면 KKT 조건을 만족시켜야 한다.
 
 
 ### Karush-Kuhn-Tucker Conditions
@@ -250,9 +250,9 @@ SVM 의 겨우엔, $w, b,a$ 가 Lagrangian dual 의 최적해가 되기 위해�
 
 1. Stationary
 
-> $\frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial w}=0 \rightarrow w = \sum^n_{i=1}\alpha_iy_ix_i$
+> $\frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial w}=0 \rightarrow w = \sum \alpha_iy_ix_i$
 
-> $\frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial b}=0 \rightarrow \sum^n_{i=1}\alpha_iy_i=0$
+> $\frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial b}=0 \rightarrow \sum \alpha_iy_i=0$
 
 2. Primal Feasibility
 
@@ -270,10 +270,12 @@ SVM 의 겨우엔, $w, b,a$ 가 Lagrangian dual 의 최적해가 되기 위해�
 
 ## Final Solution 
 
-KKT의 첫번째 조건을 유도하는 과정에서 $ w = \sum^n_{i=1}\alpha_iy_ix_i$ 를 통해 최종 해를 구할 수 있다는 것을 안다. $x_i, y_i$ 는 학습데이터이기 때문에 $\alpha_i$ 만 찾으면 된다. 이는 Complementary Slackness 를 통해 찾을 수 있다.
+KKT의 첫번째 조건을 유도하는 과정에서 $w = \sum \alpha_iy_ix_i$ 를 통해 최종 해를 구할 수 있다는 것을 안다. $x_i, y_i$ 는 학습데이터이기 때문에 $\alpha_i$ 만 찾으면 된다. 이는 Complementary Slackness 를 통해 찾을 수 있다.
+
 $$
 \alpha_i(y_i(w^Tx_i+b)-1)=0
 $$
+
 Complementary Slackness 조건을 보면 $\alpha_i$ 와 $y_i(w^Tx_i+b)-1$ 중 **반드시 하나는 0의 값을 가져야 한다는 것을 알 수 있다.** 그렇다면 두가지 경우를 생각 할 수 있다.
 
 1. $\alpha_i > 0 \ and \ y_i(w^Tx_i+b)=1$
@@ -320,7 +322,7 @@ solution = cvxopt.solvers.qp(P, q, G, h, A, b)
     Optimal solution found.
 
 
-앞선 예시에 SVM 을 적용하기 위해 `cvxopt` 라는 컨벡스 최적화 [라이브러리](https://cvxopt.org/) 를 사용하였다. 데이터 자체는 `sklearn` 의 `make_blobs` 라는 메서드를 사용했기 때문에, 원래 데이터의 공간에서도 linearly seperable 하다. 그렇기에 penalty terms 나 커널 트릭을 사용하지 않는 Hard margin SVM 을 적용해도 위와 같이 전역최적해를 찾는 것을 볼 수 있다.
+앞선 예시에 SVM 을 적용하기 위해 `cvxopt` 라는 [컨벡스 최적화 라이브러리](https://cvxopt.org/) 를 사용하였다. 데이터 자체는 `sklearn` 의 `make_blobs` 라는 메서드를 사용했기 때문에, 원래 데이터의 공간에서도 linearly seperable 하다. 그렇기에 penalty terms 나 커널 트릭을 사용하지 않는 Hard margin SVM 을 적용해도 위와 같이 전역최적해를 찾는 것을 볼 수 있다.
 
 위 Cell 의 line 2 `y[y == 0] = -1` 를 보면 샘플들의 `class_label=0` 을 `-1` 로 바꿔주는 것을 볼 수 있다. 이는 SVM 의 Original problem 의 $y_i(w^Tx_i+b)\geq 1, i=1,2,...n$ 제약식을 하나로 표현하기 위해 진행하는 작업이다. 만약 class label 들이 0과 1 이라면 Original problem 에서의 제약식을 하나로 표현할 수 없게 된다.
 
@@ -364,15 +366,6 @@ b0 = 4; b1 = f(b0, w_return, b_return, -1)
 plt.plot([a0,b0], [a1,b1], 'k--')
 ```
 
-
-
-
-    [<matplotlib.lines.Line2D at 0x1684836a0>]
-
-
-
-
-    
 ![png](SVM_tutorial_files/SVM_tutorial_26_1.png)
     
 
