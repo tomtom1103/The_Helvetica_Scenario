@@ -48,23 +48,6 @@ class GeneticAlgorithm_Jupyter:
 GA.df
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -293,9 +276,6 @@ def initialization(self):
 GA.initialization()
 ```
 
-
-
-
     [array([False, False,  True,  True, False,  True, False, False, False,
             False,  True]),
      array([ True, False, False, False, False, False, False,  True, False,
@@ -304,113 +284,15 @@ GA.initialization()
             False, False]),
      array([ True,  True,  True, False, False,  True,  True, False,  True,
              True, False]),
-     array([False, False, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([False, False,  True,  True, False,  True,  True, False, False,
-            False, False]),
-     array([False, False,  True, False, False, False,  True, False, False,
-             True,  True]),
-     array([ True, False, False, False, False, False,  True,  True, False,
-             True, False]),
-     array([False, False, False, False,  True, False, False,  True, False,
-             True, False]),
-     array([ True, False, False, False, False,  True, False, False,  True,
-             True,  True]),
-     array([False,  True,  True, False,  True,  True,  True, False, False,
-             True, False]),
-     array([False, False,  True,  True, False,  True, False, False, False,
-            False, False]),
-     array([False, False,  True, False, False, False, False, False,  True,
-            False,  True]),
-     array([False, False, False, False, False,  True, False,  True,  True,
-             True,  True]),
-     array([False,  True,  True,  True,  True,  True,  True, False, False,
-             True,  True]),
-     array([False, False,  True, False, False, False,  True,  True, False,
-            False,  True]),
-     array([ True, False,  True,  True,  True, False, False, False, False,
-             True, False]),
-     array([False, False,  True, False,  True, False, False,  True, False,
-            False,  True]),
-     array([False,  True, False,  True,  True, False, False,  True,  True,
-            False, False]),
-     array([False, False,  True,  True,  True, False, False, False, False,
-             True, False]),
-     array([False,  True,  True, False,  True, False,  True,  True,  True,
-             True,  True]),
-     array([ True, False, False, False,  True, False, False,  True, False,
-            False,  True]),
-     array([False,  True,  True,  True,  True, False,  True, False,  True,
-             True,  True]),
-     array([False, False, False, False,  True, False,  True,  True,  True,
-            False,  True]),
-     array([False,  True,  True,  True, False,  True,  True, False, False,
-             True,  True]),
-     array([ True,  True,  True,  True,  True,  True,  True, False, False,
-            False,  True]),
-     array([ True, False,  True, False,  True, False, False,  True, False,
-             True, False]),
-     array([False,  True, False,  True, False,  True, False, False,  True,
-            False, False]),
-     array([ True,  True,  True,  True,  True,  True, False,  True, False,
-             True, False]),
-     array([ True,  True,  True,  True,  True, False,  True,  True,  True,
-            False,  True]),
-     array([ True, False, False,  True,  True, False, False, False,  True,
-            False, False]),
-     array([ True,  True, False, False, False,  True,  True, False, False,
-            False, False]),
-     array([False,  True, False, False,  True,  True, False, False,  True,
-             True, False]),
-     array([ True,  True,  True,  True,  True,  True, False, False, False,
-            False, False]),
-     array([ True, False,  True, False,  True, False, False, False, False,
-             True, False]),
-     array([ True,  True, False,  True,  True, False,  True, False, False,
-            False, False]),
-     array([ True, False,  True,  True,  True, False,  True,  True, False,
-            False,  True]),
-     array([ True, False, False,  True,  True,  True,  True, False,  True,
-            False, False]),
-     array([False,  True,  True, False,  True,  True, False,  True,  True,
-             True, False]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True,  True,  True,  True,  True, False, False,  True,
-            False, False]),
-     array([ True,  True,  True,  True, False, False, False,  True, False,
-             True, False]),
-     array([ True, False, False,  True, False, False,  True,  True, False,
-            False,  True]),
-     array([False, False, False, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True,  True, False, False, False,  True,  True, False, False,
-            False,  True]),
-     array([ True, False,  True,  True, False,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True, False, False, False,  True,  True, False,  True,
-            False, False]),
-     array([False,  True,  True, False,  True, False,  True, False, False,
-            False, False]),
-     array([False, False,  True, False, False, False,  True, False, False,
-            False, False]),
      array([False,  True, False, False, False,  True, False,  True,  True,
-             True, False])]
-
-
-
+             True, False]), ...]
 
 ```python
 np.random.randint(2, size=len(GA.var_names)).astype(bool)
 ```
 
-
-
-
     array([ True,  True, False, False, False, False, False,  True, False,
             True, False])
-
-
 
 ### 2. Fitness Evaluation
 
@@ -457,65 +339,15 @@ GA.fitness_evaluation()
 
     Best chromosome score: 0.809375
 
-
-
-
-
     {0: 0.8,
      1: 0.765625,
      2: 0.7625,
      3: 0.765625,
      4: 0.80625,
-     5: 0.684375,
-     6: 0.778125,
-     7: 0.740625,
-     8: 0.709375,
-     9: 0.7625,
-     10: 0.734375,
-     11: 0.653125,
-     12: 0.7375,
-     13: 0.7875,
-     14: 0.790625,
-     15: 0.75,
-     16: 0.725,
-     17: 0.75625,
-     18: 0.740625,
-     19: 0.73125,
-     20: 0.80625,
-     21: 0.728125,
-     22: 0.796875,
-     23: 0.746875,
-     24: 0.8,
-     25: 0.79375,
-     26: 0.75625,
-     27: 0.678125,
-     28: 0.7625,
-     29: 0.79375,
-     30: 0.621875,
-     31: 0.690625,
-     32: 0.734375,
-     33: 0.7,
-     34: 0.70625,
-     35: 0.7,
-     36: 0.8,
-     37: 0.684375,
-     38: 0.765625,
-     39: 0.8,
-     40: 0.715625,
-     41: 0.778125,
-     42: 0.771875,
-     43: 0.64375,
-     44: 0.76875,
-     45: 0.809375,
-     46: 0.690625,
-     47: 0.675,
-     48: 0.575,
+     ...,
      49: 0.73125}
 
-
-
 Population 의 각 chromosome 은 RF를 학습시키는 데이터의 변수들을 마스킹 하는 용도로 사용 된다.
-
 
 ```python
 mask = GA.population[0]
@@ -523,23 +355,6 @@ train_data = GA.data[np.array(GA.var_names)[mask]]
 train_data
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -633,19 +448,13 @@ train_data
 <p>1599 rows × 4 columns</p>
 </div>
 
-
-
 위 예시에서 볼 수 있듯이, 첫번째 chromosome 을 통해 RF 모델은 6개의 변수만 사용하여 학습을 진행한다.
 
 각 generation 에서 계산되는 accuracy score 은 `self.fitness_dict` 에 저장되며, 이중 가장 높은 점수를 얻은 chromosome 은 `self.best_chromosome_score` 에 저장된다.
 
-
 ```python
 GA.fitness_dict
 ```
-
-
-
 
     {0: 0.8,
      1: 0.765625,
@@ -653,49 +462,7 @@ GA.fitness_dict
      3: 0.765625,
      4: 0.80625,
      5: 0.684375,
-     6: 0.778125,
-     7: 0.740625,
-     8: 0.709375,
-     9: 0.7625,
-     10: 0.734375,
-     11: 0.653125,
-     12: 0.7375,
-     13: 0.7875,
-     14: 0.790625,
-     15: 0.75,
-     16: 0.725,
-     17: 0.75625,
-     18: 0.740625,
-     19: 0.73125,
-     20: 0.80625,
-     21: 0.728125,
-     22: 0.796875,
-     23: 0.746875,
-     24: 0.8,
-     25: 0.79375,
-     26: 0.75625,
-     27: 0.678125,
-     28: 0.7625,
-     29: 0.79375,
-     30: 0.621875,
-     31: 0.690625,
-     32: 0.734375,
-     33: 0.7,
-     34: 0.70625,
-     35: 0.7,
-     36: 0.8,
-     37: 0.684375,
-     38: 0.765625,
-     39: 0.8,
-     40: 0.715625,
-     41: 0.778125,
-     42: 0.771875,
-     43: 0.64375,
-     44: 0.76875,
-     45: 0.809375,
-     46: 0.690625,
-     47: 0.675,
-     48: 0.575,
+     ...,
      49: 0.73125}
 
 
@@ -726,109 +493,14 @@ def probabilistic_selection(self):
 GA.probabilistic_selection()
 ```
 
-
-
-
     [array([False,  True, False, False, False,  True, False,  True,  True,
              True, False]),
      array([ True, False, False, False,  True, False, False,  True, False,
             False,  True]),
      array([False, False,  True,  True, False,  True, False, False, False,
             False, False]),
-     array([False,  True, False, False,  True,  True, False, False,  True,
-             True, False]),
-     array([ True, False, False, False,  True, False, False,  True, False,
-            False,  True]),
-     array([False, False, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([ True, False,  True,  True,  True, False, False, False, False,
-             True, False]),
-     array([ True, False, False,  True, False, False,  True,  True, False,
-            False,  True]),
-     array([False, False, False, False, False,  True, False,  True,  True,
-             True,  True]),
-     array([False,  True,  True, False,  True, False,  True, False, False,
-            False, False]),
-     array([ True,  True, False, False, False,  True,  True, False,  True,
-            False, False]),
-     array([False,  True,  True, False,  True,  True,  True, False, False,
-             True, False]),
-     array([False, False,  True,  True, False,  True, False, False, False,
-            False, False]),
-     array([False, False, False, False, False,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([False, False,  True, False, False, False,  True, False, False,
-            False, False]),
-     array([False,  True, False, False, False,  True, False,  True,  True,
-             True, False]),
-     array([False, False, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([ True, False, False, False, False, False,  True,  True, False,
-             True, False]),
-     array([False,  True,  True,  True,  True, False,  True, False,  True,
-             True,  True]),
-     array([ True, False,  True,  True, False,  True, False,  True,  True,
-             True,  True]),
-     array([False, False, False, False,  True, False,  True,  True,  True,
-            False,  True]),
-     array([ True,  True, False, False,  True,  True,  True,  True, False,
-            False, False]),
-     array([ True, False, False,  True,  True, False, False, False,  True,
-            False, False]),
-     array([False,  True,  True,  True,  True, False,  True, False,  True,
-             True,  True]),
-     array([False, False,  True, False,  True, False, False,  True, False,
-            False,  True]),
-     array([False, False, False, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True,  True,  True,  True,  True,  True, False, False,  True,
-            False, False]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([ True, False, False, False, False, False,  True,  True, False,
-             True, False]),
-     array([ True,  True, False, False, False,  True,  True, False, False,
-            False,  True]),
-     array([ True,  True,  True, False, False,  True,  True, False,  True,
-             True, False]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True,  True,  True,  True,  True, False,  True, False,
-             True, False]),
-     array([False, False,  True, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True, False, False, False, False,  True, False, False,  True,
-             True,  True]),
      array([ True, False, False, False, False, False, False,  True, False,
-             True,  True]),
-     array([ True, False, False, False, False, False, False,  True, False,
-             True,  True]),
-     array([ True,  True, False, False,  True,  True,  True,  True, False,
-            False, False]),
-     array([False, False, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([ True,  True,  True,  True,  True, False,  True,  True,  True,
-            False,  True]),
-     array([ True,  True, False, False, False,  True,  True, False,  True,
-            False, False]),
-     array([ True,  True,  True,  True,  True,  True, False, False,  True,
-            False, False]),
-     array([False,  True,  True,  True,  True,  True,  True, False, False,
-             True,  True]),
-     array([ True,  True,  True,  True, False, False, False,  True, False,
-             True, False]),
-     array([ True,  True, False, False, False,  True,  True, False, False,
-            False,  True]),
-     array([False, False,  True, False, False, False,  True, False, False,
-            False, False]),
-     array([False, False,  True,  True, False,  True, False, False, False,
-            False, False]),
-     array([False, False, False, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True, False, False, False, False, False, False,  True, False,
-             True,  True])]
+             True,  True]), ...]
 
 
 
@@ -840,55 +512,13 @@ fitness_score = list(GA.fitness_dict.values())
 fitness_score
 ```
 
-
-
-
     [0.8,
      0.765625,
      0.7625,
      0.765625,
      0.80625,
      0.684375,
-     0.778125,
-     0.740625,
-     0.709375,
-     0.7625,
-     0.734375,
-     0.653125,
-     0.7375,
-     0.7875,
-     0.790625,
-     0.75,
-     0.725,
-     0.75625,
-     0.740625,
-     0.73125,
-     0.80625,
-     0.728125,
-     0.796875,
-     0.746875,
-     0.8,
-     0.79375,
-     0.75625,
-     0.678125,
-     0.7625,
-     0.79375,
-     0.621875,
-     0.690625,
-     0.734375,
-     0.7,
-     0.70625,
-     0.7,
-     0.8,
-     0.684375,
-     0.765625,
-     0.8,
-     0.715625,
-     0.778125,
-     0.771875,
-     0.64375,
-     0.76875,
-     0.809375,
+     ...,
      0.690625,
      0.675,
      0.575,
@@ -914,9 +544,6 @@ fitness_score = GA.softmax(fitness_score)
 fitness_score
 ```
 
-
-
-
     array([0.02120602, 0.02048945, 0.02042552, 0.02048945, 0.02133897,
            0.01889052, 0.02074717, 0.01998356, 0.01936873, 0.02042552,
            0.01985905, 0.01830932, 0.01992121, 0.02094259, 0.02100814,
@@ -938,21 +565,15 @@ selection = np.random.choice(list(GA.fitness_dict.keys()), GA.pop_size, p=list(f
 selection
 ```
 
-
-
-
     array([43, 10, 45, 27, 15, 13, 28, 12, 17, 39, 25, 49,  6, 10, 28, 26, 17,
             2,  2, 15,  6, 23, 20,  9,  1, 36, 18, 31, 23, 23, 46,  3, 27, 43,
            35,  1,  2, 36,  1, 49, 38, 25, 27,  3,  7,  9, 13, 34,  5, 23])
-
-
 
 유전 알고리즘을 구현 할 때 elitism 이란 장치를 사용하는 경우도 있다.
 
 각 세대가 지나면서 생성되는 자식 chromosome 이 부모 chromosome 보다 우월할 것이란 보장은 없다. 그렇기에 가장 높은 fitness score 을 가진 chromosome 을 확정적으로 다음 세대에 넘기는 것이 elitism 이다.
 
 해당 코드에선 `elitism=1` 을 적용하였다.
-
 
 ```python
 parent_population = []
@@ -1004,119 +625,19 @@ def crossover(self):
 GA.crossover()
 ```
 
-
-
-
     [array([False,  True, False, False,  True, False, False,  True, False,
             False,  True]),
      array([ True, False, False, False, False,  True, False,  True,  True,
              True, False]),
      array([False, False,  True,  True, False,  True, False, False, False,
             False, False]),
-     array([False,  True, False, False,  True,  True, False, False,  True,
-             True, False]),
-     array([ True, False, False, False,  True, False, False,  True, False,
-            False,  True]),
-     array([False, False, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([ True, False,  True,  True,  True, False, False, False, False,
-             True, False]),
-     array([ True, False, False,  True, False, False,  True,  True, False,
-            False,  True]),
-     array([False,  True,  True, False,  True, False,  True, False, False,
-            False, False]),
-     array([False, False, False, False, False,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True, False, False, False,  True,  True, False,  True,
-            False, False]),
-     array([False,  True,  True, False,  True,  True,  True, False, False,
-             True, False]),
-     array([False, False,  True,  True, False,  True, False, False, False,
-            False, False]),
-     array([False, False, False, False, False,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([False, False,  True, False, False, False,  True, False, False,
-            False, False]),
-     array([False,  True, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([False, False, False, False, False,  True, False,  True,  True,
-             True, False]),
-     array([ True, False, False, False, False, False,  True,  True,  True,
-             True,  True]),
-     array([False,  True,  True,  True,  True, False,  True, False, False,
-             True, False]),
-     array([ True, False,  True,  True, False,  True, False,  True,  True,
-             True,  True]),
-     array([False, False, False, False,  True, False,  True,  True,  True,
-            False,  True]),
-     array([ True, False, False,  True,  True, False, False, False,  True,
-            False, False]),
-     array([ True,  True, False, False,  True,  True,  True,  True, False,
-            False, False]),
-     array([False,  True,  True,  True,  True, False,  True, False,  True,
-             True,  True]),
-     array([False, False,  True, False,  True, False, False,  True, False,
-            False,  True]),
-     array([False, False, False,  True,  True,  True, False, False,  True,
-            False, False]),
-     array([ True,  True,  True, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([ True, False, False, False, False, False,  True,  True, False,
-             True, False]),
-     array([ True,  True, False, False, False,  True,  True, False,  True,
-             True, False]),
-     array([ True,  True,  True, False, False,  True,  True, False, False,
-            False,  True]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True,  True,  True,  True,  True, False,  True, False,
-             True, False]),
-     array([False, False,  True, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True, False, False, False, False,  True, False, False,  True,
-             True,  True]),
      array([ True, False, False, False, False, False, False,  True, False,
-             True,  True]),
-     array([ True, False, False, False, False, False, False,  True, False,
-             True,  True]),
-     array([ True,  True, False, False,  True,  True,  True,  True, False,
-            False, False]),
-     array([False, False, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([ True,  True, False, False, False,  True,  True, False,  True,
-            False, False]),
-     array([ True,  True,  True,  True,  True, False,  True,  True,  True,
-            False,  True]),
-     array([ True,  True,  True,  True,  True,  True, False, False,  True,
-            False, False]),
-     array([False,  True,  True,  True,  True,  True,  True, False, False,
-             True,  True]),
-     array([ True,  True,  True,  True, False, False, False,  True, False,
-            False,  True]),
-     array([ True,  True, False, False, False,  True,  True, False, False,
-             True, False]),
-     array([False, False,  True, False, False, False,  True, False, False,
-            False, False]),
-     array([False, False,  True,  True, False,  True, False, False, False,
-            False, False]),
-     array([False, False, False, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True, False, False, False, False, False, False,  True, False,
-             True,  True])]
-
-
-
+             True,  True]), ...]
 
 ```python
 crossover_point = np.random.randint(1, len(GA.var_names) - 1)
 crossover_point
 ```
-
-
 
 
     3
@@ -1162,100 +683,8 @@ GA.mutation()
              True, False]),
      array([False, False,  True,  True, False,  True, False, False, False,
             False, False]),
-     array([False,  True, False, False,  True,  True, False, False,  True,
-             True, False]),
-     array([ True, False, False, False,  True, False, False,  True, False,
-            False,  True]),
-     array([False, False, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([ True, False,  True,  True,  True, False, False, False, False,
-             True, False]),
-     array([ True, False, False,  True, False, False,  True,  True, False,
-            False,  True]),
-     array([False,  True,  True, False,  True, False,  True, False, False,
-            False, False]),
-     array([False, False, False, False, False,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True, False, False, False,  True,  True, False,  True,
-            False, False]),
-     array([False,  True,  True, False,  True,  True,  True, False, False,
-             True, False]),
-     array([False, False,  True,  True, False,  True, False, False, False,
-            False, False]),
-     array([False, False, False, False, False,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([False, False,  True, False, False, False,  True, False, False,
-            False, False]),
-     array([False,  True, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([False, False, False, False, False,  True, False,  True,  True,
-             True, False]),
-     array([ True, False, False, False, False, False,  True,  True,  True,
-             True,  True]),
-     array([False,  True,  True,  True,  True, False,  True, False, False,
-             True, False]),
-     array([ True, False,  True,  True, False,  True, False,  True,  True,
-             True,  True]),
-     array([False, False, False, False,  True, False,  True,  True,  True,
-            False,  True]),
-     array([ True, False, False,  True,  True, False, False, False,  True,
-            False, False]),
-     array([ True,  True, False, False,  True,  True,  True,  True, False,
-            False, False]),
-     array([False,  True,  True,  True,  True, False,  True, False,  True,
-             True,  True]),
-     array([False, False,  True, False,  True, False, False,  True, False,
-            False,  True]),
-     array([False, False, False,  True,  True,  True, False, False,  True,
-            False, False]),
-     array([ True,  True,  True, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([ True, False, False, False, False, False,  True,  True, False,
-             True, False]),
-     array([ True,  True, False, False, False,  True,  True, False,  True,
-             True, False]),
-     array([ True,  True,  True, False, False,  True,  True, False, False,
-            False,  True]),
-     array([ True,  True, False, False,  True,  True, False,  True,  True,
-             True,  True]),
-     array([ True,  True,  True,  True,  True,  True, False,  True, False,
-             True, False]),
-     array([False, False,  True, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True, False, False, False, False,  True, False, False,  True,
-             True,  True]),
      array([ True, False, False, False, False, False, False,  True, False,
-             True,  True]),
-     array([ True, False, False, False, False, False, False,  True, False,
-             True,  True]),
-     array([ True,  True, False, False,  True,  True,  True,  True, False,
-            False, False]),
-     array([False, False, False,  True, False, False,  True,  True,  True,
-             True,  True]),
-     array([ True,  True, False, False, False,  True,  True, False,  True,
-            False, False]),
-     array([ True,  True,  True,  True,  True, False,  True,  True,  True,
-            False,  True]),
-     array([ True,  True,  True,  True,  True,  True, False, False,  True,
-            False, False]),
-     array([False,  True,  True,  True,  True,  True,  True, False, False,
-             True,  True]),
-     array([ True,  True,  True,  True, False, False, False,  True, False,
-            False,  True]),
-     array([ True,  True, False, False, False,  True,  True, False, False,
-             True, False]),
-     array([False, False,  True, False, False, False,  True, False, False,
-            False, False]),
-     array([False, False,  True,  True, False,  True, False, False, False,
-            False, False]),
-     array([False, False, False, False, False, False, False, False,  True,
-            False,  True]),
-     array([ True, False, False, False, False, False, False,  True, False,
-             True,  True])]
+             True,  True]), ...]
 
 
 
@@ -1326,41 +755,10 @@ GA.run_algorithm()
 
     Generation 1
     Initializing the first population..
-    Best chromosome score: 0.81875
+    Best chromosome score: 0.80875
     Generation 2
     Best chromosome score: 0.8125
-    Generation 3
-    Best chromosome score: 0.80625
-    Generation 4
-    Best chromosome score: 0.809375
-    Generation 5
-    Best chromosome score: 0.815625
-    Generation 6
-    Best chromosome score: 0.81875
-    Generation 7
-    Best chromosome score: 0.815625
-    Generation 8
-    Best chromosome score: 0.821875
-    Generation 9
-    Best chromosome score: 0.821875
-    Generation 10
-    Best chromosome score: 0.8125
-    Generation 11
-    Best chromosome score: 0.8125
-    Generation 12
-    Best chromosome score: 0.81875
-    Generation 13
-    Best chromosome score: 0.809375
-    Generation 14
-    Best chromosome score: 0.815625
-    Generation 15
-    Best chromosome score: 0.81875
-    Generation 16
-    Best chromosome score: 0.821875
-    Generation 17
-    Best chromosome score: 0.81875
-    Generation 18
-    Best chromosome score: 0.815625
+    ...
     Generation 19
     Best chromosome score: 0.821875
     Generation 20
@@ -1388,325 +786,11 @@ GA.plot()
 
 아래의 상관계수행렬을 보면, 높은 상관관계를 갖는 변수는 없다. 만약 높은 상관계수를 가진 변수들의 쌍이 많았다면, 해당 변수들의 쌍 중 하나를 사용하지 않고 알고리즘이 진행되었을 가능성이 높다.
 
-
 ```python
 corr = GA.data.corr()
 corr.style.background_gradient(cmap='coolwarm')
 ```
 
-
-
-
-<style type="text/css">
-#T_66d25_row0_col0, #T_66d25_row1_col1, #T_66d25_row2_col2, #T_66d25_row3_col3, #T_66d25_row4_col4, #T_66d25_row5_col5, #T_66d25_row6_col6, #T_66d25_row7_col7, #T_66d25_row8_col8, #T_66d25_row9_col9, #T_66d25_row10_col10 {
-  background-color: #b40426;
-  color: #f1f1f1;
-}
-#T_66d25_row0_col1, #T_66d25_row9_col1 {
-  background-color: #779af7;
-  color: #f1f1f1;
-}
-#T_66d25_row0_col2 {
-  background-color: #f08a6c;
-  color: #f1f1f1;
-}
-#T_66d25_row0_col3, #T_66d25_row4_col10 {
-  background-color: #7699f6;
-  color: #f1f1f1;
-}
-#T_66d25_row0_col4 {
-  background-color: #98b9ff;
-  color: #000000;
-}
-#T_66d25_row0_col5, #T_66d25_row0_col8, #T_66d25_row1_col2, #T_66d25_row1_col9, #T_66d25_row2_col1, #T_66d25_row7_col10, #T_66d25_row8_col0, #T_66d25_row8_col3, #T_66d25_row8_col4, #T_66d25_row10_col6, #T_66d25_row10_col7 {
-  background-color: #3b4cc0;
-  color: #f1f1f1;
-}
-#T_66d25_row0_col6 {
-  background-color: #516ddb;
-  color: #f1f1f1;
-}
-#T_66d25_row0_col7 {
-  background-color: #f18d6f;
-  color: #f1f1f1;
-}
-#T_66d25_row0_col9, #T_66d25_row3_col8 {
-  background-color: #b1cbfc;
-  color: #000000;
-}
-#T_66d25_row0_col10 {
-  background-color: #9bbcff;
-  color: #000000;
-}
-#T_66d25_row1_col0, #T_66d25_row3_col4, #T_66d25_row5_col3 {
-  background-color: #8db0fe;
-  color: #000000;
-}
-#T_66d25_row1_col3, #T_66d25_row2_col5 {
-  background-color: #536edd;
-  color: #f1f1f1;
-}
-#T_66d25_row1_col4 {
-  background-color: #90b2fe;
-  color: #000000;
-}
-#T_66d25_row1_col5 {
-  background-color: #6180e9;
-  color: #f1f1f1;
-}
-#T_66d25_row1_col6 {
-  background-color: #86a9fc;
-  color: #f1f1f1;
-}
-#T_66d25_row1_col7 {
-  background-color: #aec9fc;
-  color: #000000;
-}
-#T_66d25_row1_col8 {
-  background-color: #e8d6cc;
-  color: #000000;
-}
-#T_66d25_row1_col10 {
-  background-color: #7a9df8;
-  color: #f1f1f1;
-}
-#T_66d25_row2_col0 {
-  background-color: #ec8165;
-  color: #f1f1f1;
-}
-#T_66d25_row2_col3, #T_66d25_row3_col9, #T_66d25_row5_col4 {
-  background-color: #80a3fa;
-  color: #f1f1f1;
-}
-#T_66d25_row2_col4, #T_66d25_row7_col1, #T_66d25_row7_col4, #T_66d25_row10_col0 {
-  background-color: #b6cefa;
-  color: #000000;
-}
-#T_66d25_row2_col6, #T_66d25_row7_col8 {
-  background-color: #7b9ff9;
-  color: #f1f1f1;
-}
-#T_66d25_row2_col7 {
-  background-color: #eed0c0;
-  color: #000000;
-}
-#T_66d25_row2_col8, #T_66d25_row9_col3 {
-  background-color: #5470de;
-  color: #f1f1f1;
-}
-#T_66d25_row2_col9 {
-  background-color: #d1dae9;
-  color: #000000;
-}
-#T_66d25_row2_col10, #T_66d25_row6_col1, #T_66d25_row7_col3 {
-  background-color: #c1d4f4;
-  color: #000000;
-}
-#T_66d25_row3_col0 {
-  background-color: #d6dce4;
-  color: #000000;
-}
-#T_66d25_row3_col1 {
-  background-color: #b2ccfb;
-  color: #000000;
-}
-#T_66d25_row3_col2, #T_66d25_row5_col8 {
-  background-color: #cedaeb;
-  color: #000000;
-}
-#T_66d25_row3_col5 {
-  background-color: #9dbdff;
-  color: #000000;
-}
-#T_66d25_row3_col6, #T_66d25_row6_col0 {
-  background-color: #abc8fd;
-  color: #000000;
-}
-#T_66d25_row3_col7 {
-  background-color: #edd2c3;
-  color: #000000;
-}
-#T_66d25_row3_col10 {
-  background-color: #b3cdfb;
-  color: #000000;
-}
-#T_66d25_row4_col0 {
-  background-color: #d3dbe7;
-  color: #000000;
-}
-#T_66d25_row4_col1 {
-  background-color: #bfd3f6;
-  color: #000000;
-}
-#T_66d25_row4_col2 {
-  background-color: #d9dce1;
-  color: #000000;
-}
-#T_66d25_row4_col3 {
-  background-color: #6384eb;
-  color: #f1f1f1;
-}
-#T_66d25_row4_col5 {
-  background-color: #6687ed;
-  color: #f1f1f1;
-}
-#T_66d25_row4_col6 {
-  background-color: #7ea1fa;
-  color: #f1f1f1;
-}
-#T_66d25_row4_col7 {
-  background-color: #d4dbe6;
-  color: #000000;
-}
-#T_66d25_row4_col8, #T_66d25_row5_col9, #T_66d25_row6_col4 {
-  background-color: #8caffe;
-  color: #000000;
-}
-#T_66d25_row4_col9, #T_66d25_row9_col4 {
-  background-color: #dddcdc;
-  color: #000000;
-}
-#T_66d25_row5_col0 {
-  background-color: #a3c2fe;
-  color: #000000;
-}
-#T_66d25_row5_col1 {
-  background-color: #afcafc;
-  color: #000000;
-}
-#T_66d25_row5_col2, #T_66d25_row5_col7 {
-  background-color: #a5c3fe;
-  color: #000000;
-}
-#T_66d25_row5_col6 {
-  background-color: #f6a385;
-  color: #000000;
-}
-#T_66d25_row5_col10, #T_66d25_row9_col8 {
-  background-color: #9abbff;
-  color: #000000;
-}
-#T_66d25_row6_col2 {
-  background-color: #b9d0f9;
-  color: #000000;
-}
-#T_66d25_row6_col3 {
-  background-color: #93b5fe;
-  color: #000000;
-}
-#T_66d25_row6_col5 {
-  background-color: #f7a889;
-  color: #000000;
-}
-#T_66d25_row6_col7 {
-  background-color: #bad0f8;
-  color: #000000;
-}
-#T_66d25_row6_col8 {
-  background-color: #b5cdfa;
-  color: #000000;
-}
-#T_66d25_row6_col9 {
-  background-color: #89acfd;
-  color: #000000;
-}
-#T_66d25_row6_col10, #T_66d25_row8_col5 {
-  background-color: #799cf8;
-  color: #f1f1f1;
-}
-#T_66d25_row7_col0 {
-  background-color: #ed8366;
-  color: #f1f1f1;
-}
-#T_66d25_row7_col2 {
-  background-color: #f1cdba;
-  color: #000000;
-}
-#T_66d25_row7_col5, #T_66d25_row8_col6 {
-  background-color: #5e7de7;
-  color: #f1f1f1;
-}
-#T_66d25_row7_col6 {
-  background-color: #85a8fc;
-  color: #f1f1f1;
-}
-#T_66d25_row7_col9 {
-  background-color: #a7c5fe;
-  color: #000000;
-}
-#T_66d25_row8_col1 {
-  background-color: #dedcdb;
-  color: #000000;
-}
-#T_66d25_row8_col2 {
-  background-color: #3c4ec2;
-  color: #f1f1f1;
-}
-#T_66d25_row8_col7 {
-  background-color: #5a78e4;
-  color: #f1f1f1;
-}
-#T_66d25_row8_col9 {
-  background-color: #4a63d3;
-  color: #f1f1f1;
-}
-#T_66d25_row8_col10 {
-  background-color: #d5dbe5;
-  color: #000000;
-}
-#T_66d25_row9_col0 {
-  background-color: #e0dbd8;
-  color: #000000;
-}
-#T_66d25_row9_col2 {
-  background-color: #ead4c8;
-  color: #000000;
-}
-#T_66d25_row9_col5 {
-  background-color: #7396f5;
-  color: #f1f1f1;
-}
-#T_66d25_row9_col6 {
-  background-color: #7da0f9;
-  color: #f1f1f1;
-}
-#T_66d25_row9_col7 {
-  background-color: #cad8ef;
-  color: #000000;
-}
-#T_66d25_row9_col10 {
-  background-color: #bed2f6;
-  color: #000000;
-}
-#T_66d25_row10_col1 {
-  background-color: #84a7fc;
-  color: #f1f1f1;
-}
-#T_66d25_row10_col2 {
-  background-color: #c9d7f0;
-  color: #000000;
-}
-#T_66d25_row10_col3 {
-  background-color: #5f7fe8;
-  color: #f1f1f1;
-}
-#T_66d25_row10_col4 {
-  background-color: #445acc;
-  color: #f1f1f1;
-}
-#T_66d25_row10_col5 {
-  background-color: #506bda;
-  color: #f1f1f1;
-}
-#T_66d25_row10_col8 {
-  background-color: #e4d9d2;
-  color: #000000;
-}
-#T_66d25_row10_col9 {
-  background-color: #97b8ff;
-  color: #000000;
-}
-</style>
 <table id="T_66d25">
   <thead>
     <tr>
