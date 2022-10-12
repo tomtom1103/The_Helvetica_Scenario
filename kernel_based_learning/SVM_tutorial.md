@@ -88,7 +88,7 @@ plt.xlim(-1, 3.5);
 
     
 
-<img src="SVM_tutorial_files/SVM_tutorial_12_0.png" alt="drawing" width="400"/>
+<img src="SVM_tutorial_files/SVM_tutorial_12_0.png" alt="drawing" width="300"/>
 
 
 앞선 예시로 돌아가, 두개의 hyperplane 이 있다. SVM 을 통해 최적해의 hyperplane 을 구한다면, margin 이 더 큰 파란색의 hyperplane 이 최적해 일 것이다.
