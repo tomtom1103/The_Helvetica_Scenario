@@ -34,7 +34,9 @@ sns.set()
 
 Overfitting 과 generalization ability 간의 tradeoff 에 대한 연구는 신경망쪽에서 활발하지만, SVM은 본질적으로 statistical learning theory 에 기반해 있기 때문에 train error 이 줄어들면 test error 도 줄어드는 모델이다.
 
-![Hyperplane](../images/hyperplane.png)
+<p align="center">
+    <img src="../images/hyperplane.png" width="400"/>
+</p>
 
 2개의 class 를 완벽히 분류하는 hyperplane 은 $w^T + b = 0$ 이며,  $w$는 hyperplane 의 법선벡터, $b$는 bias 다. $w$는 우리가 흔히 알고 있는 hyperplane 의 기울기, $b$는 hyperplane 의 y-intercept 라고 생각하면 간단하다. 
 
@@ -56,15 +58,21 @@ plt.xlim(-1, 3.5);
 
 
     
-![png](SVM_tutorial_files/SVM_tutorial_8_0.png)
-    
+<p align="center">
+    <img src="SVM_tutorial_files/SVM_tutorial_8_0.png" width="400"/>
+</p>
+
 
 
 위 예시를 보면, 두개의 클래스로 이루어진 데이터포인트들을 잘 분류하는 경계면이 두개가 있다. 인공신경망을 통해 해당 경계면을 학습했다면, **두 경계면 중 어떤 분류기가 옳은 분류기라는 답을 낼 수 없다.** 인공신경망, SVM 그리고 그 어떤 머신러닝 모델은 training data 를 완벽히 분류할 수 있는 hyperplane 이 많이 존재하더라도 미래에 들어올 데이터도 잘 분류하는 최적의 hyperplane 을 찾아야 한다.
 
 그리고 SVM 에서는 margin 이라는 개념을 도입해서 **최적의 hyperplane 단 하나를 찾는다.**
 
-![Margin](../images/margin.png)
+<p align="center">
+    <img src="../images/margin.png" width="400"/>
+</p>
+
+
 
 위 그림을 보면 두개의 클래스를 잘 구분하는 hyperplane 이 있다. 각 클래스에서 Hyperplane 과 가장 가까운 점들이 있고, 해당 점들은 또 다른 점선에 놓여있다. 해당 점선들을 각각 plus plane, minus plane 이라 부르며 이 두 plane 의 거리를 margin 이라 한다. Margin 이 클수록 두 클래스는 더 멀리 떨어져 있다는 것을 의미하며, 해당 training set 에서 margin 이 제일 큰 hyperplane 을 찾으면 미래 데이터도 잘 구분할 수 있다는 것을 의미한다.
 
@@ -88,7 +96,7 @@ plt.xlim(-1, 3.5);
 
     
 <p align="center">
-    <img src="SVM_tutorial_files/SVM_tutorial_12_0.png" alt="drawing" width="500"/>
+    <img src="SVM_tutorial_files/SVM_tutorial_12_0.png" alt="drawing" width="400"/>
 </p>
 
 앞선 예시로 돌아가, 두개의 hyperplane 이 있다. SVM 을 통해 최적해의 hyperplane 을 구한다면, margin 이 더 큰 파란색의 hyperplane 이 최적해 일 것이다.
@@ -163,7 +171,11 @@ $$
 min \  \frac 1 2 \mid\mid w \mid\mid ^2_2 \rightarrow Objective \ function
 $$
 
-![Margin](../images/margin.png)
+<p align="center">
+    <img src="../images/margin.png" width="400"/>
+</p>
+
+
 
 목적식을 구했다면 제약식을 구할 차례다. SVM 에 새로운 데이터 포인트가 들어온다고 생각해보자. 그렇다면 해당 데이터포인트는 $+1, -1$ 둘 중 하나의 클라스로 구분 될 것이고, $+1$이라면 plus plane 보다 위에 있을 것이고 $-1$이라면 minus plane 보다 아래에 있을 것이다. 데이터포인트의 클라스 (혹은 정답 레이블) 는 $y_i$ 로 표현을 한다면, 위 제약식을 수식으로 쓰면 다음과 같다.
 
@@ -370,8 +382,10 @@ b0 = 4; b1 = f(b0, w_return, b_return, -1)
 plt.plot([a0,b0], [a1,b1], 'k--')
 ```
 
-![png](SVM_tutorial_files/SVM_tutorial_26_1.png)
-    
+<p align="center">
+    <img src="SVM_tutorial_files/SVM_tutorial_26_1.png" width="400"/>
+</p>
+
 
 
 Plot 을 그려보면 train set 을 통해 margin 이 최대화 되는 hyperplane 을 찾은 것을 볼 수 있다.
