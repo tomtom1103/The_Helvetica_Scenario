@@ -152,9 +152,11 @@ $$
 $$
 
 SVM의 목적은 $\frac 2 {||w||_2}$ 를 최대화 하는걸로 귀결된다. 이 최대화 문제에 역수를 취해 최소화 문제로 만들면 다음과 같다.
+
 $$
 min \  \frac 1 2 \mid\mid w \mid\mid ^2_2
 $$
+
 기존 문제에 역수를 취해 $min$ 문제로 만든 뒤 L2 norm 의 제곱근을 없애기 위해 목적식에 제곱을 취해주면 **$w$ 로 표현한 SVM 의 목적식을 얻을 수 있다.**
 
 $$
@@ -209,6 +211,7 @@ SVM 의 Original Problem 은 QP 문제다. QP 문제는 전역최적해가 하�
 Original Problem 의 목적식과 제약식이 Lagrangian Primal 에선 $\alpha$ 를 통해 하나의 목적식으로 합쳐졌고, 기존 제약식의 범위가 1보다 커야 했기 때문에 $\alpha$ 가 0보다 커야 한다는 제약식이 생긴다. 이 Lagrangian Primal 문제의 목적식이 $\max\min$ 이기 때문에, $\max$ 만 존재하는 쌍대문제 (Dual) 로 바꿔 풀어야 한다. 즉, **Primal formulation 을 minmize 후 Dual formulation 을 maximize 하면 된다.** 
 
 Primal formulation 또한 Original Problem 과 같이 QP 이기 때문에 Convex 하고 Continuous 하다. 0에서 최솟값을 갖기 때문에 $w, b$ 에 대해서 편미분을 해야한다.
+
 $$
 \frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial w}=0 \rightarrow w = \sum^n_{i=1}\alpha_iy_ix_i\\
 $$
@@ -216,6 +219,7 @@ $$
 $$
 \frac {\partial \mathcal{L}(w,b,\alpha_i)}{\partial b}=0 \rightarrow \sum^n_{i=1}\alpha_iy_i=0
 $$
+
 이렇게 두가지 수식을 구할 수 있다. **되짚어보면 우리의 목적은 $w, b$ 를 구하는 것이다.** 첫번째 수식에 $w$ 에 대한 정의가 있는데, $\alpha$ 를 찾아야 하다. 그리고 두번째 수식에서 $\alpha$ 와 $y$ 의 곱의 합이 0이 되어야 한다는 것 또한 알게 되었다. 이 두가지 식을 다시 Primal formulation 에 대입을 하면 $\alpha$ 값을 최대화 시키는것이 목적인 dual 문제로 변환시킬 수 있다.
 
 
