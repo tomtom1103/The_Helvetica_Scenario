@@ -20,8 +20,7 @@ The custom Class can be found in [Genetic Algorithm Class](https://github.com/to
 --------------------------
 
 ## 2. Kernel Based Learning
-\
-\
+
 This is the markdown for the second assignment: [Support Vector Machine Tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/kernel_based_learning/SVM_tutorial.md).
 
 
