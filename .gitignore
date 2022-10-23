@@ -4,3 +4,4 @@ genetic_algorithm/ga_test.py
 kernel_based_learning/svm_test.py
 kernel_based_learning/svm_test2.py
 *.ipynb_checkpoints
+anomaly_detection/anomaly_test.py

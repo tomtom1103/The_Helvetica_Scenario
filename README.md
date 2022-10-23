@@ -20,6 +20,11 @@ The custom Class can be found in [Genetic Algorithm Class](https://github.com/to
 --------------------------
 
 ## 2. Kernel Based Learning
+\
+\
+This is the markdown for the second assignment: [Support Vector Machine Tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/kernel_based_learning/SVM_tutorial.md).
+
+
 
 --------------------------
 The name 'Helvetica Scenario' derives from Ian Goodfellow's reference of the educational spoof 'Look Around You' in his 2014 GAN paper.
