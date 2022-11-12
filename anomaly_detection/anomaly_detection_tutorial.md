@@ -171,8 +171,10 @@ $$
 정의할 가우시안의 개수 $m$ 은 hyperparameter이며, 데이터를 통해 $m$ 개의 가우시안의 fitting 을 진행한다.
 
 $$
-p(\mathbf{x} \mid \lambda)=\sum_{m=1}^M w_m g\left(\mathbf{x} \mid \boldsymbol{\mu}_m, \mathbf{\Sigma}_m\right)\\
+p(\mathbf{x} \mid \lambda)=\sum_{m=1}^M w_m g\left(\mathbf{x} \mid \boldsymbol{\mu}_m, \mathbf{\Sigma}_m\right)
+$$
 
+$$
 \lambda=\left\{w_m, \boldsymbol{\mu}_m, \mathbf{\Sigma}_m\right\}, \quad m=1, \cdots, M
 $$
 
@@ -260,8 +262,20 @@ plt.scatter(X[:, 0], X[:, 1], cmap='viridis');
 Full:
 
 $$
-\Sigma=\left[\begin{array}{ccc}\sigma_{11} & \cdots & \sigma_{1 d} \\ \vdots & \ddots & \vdots \\ \sigma_{d 1} & \cdots & \sigma_{d d}\end{array}\right]
+\Sigma=\left[\begin{array}{ccc}\sigma_{11} & \cdots & \sigma_{1 d} \\
+\vdots & \ddots & \vdots \\
+\sigma_{d1} & \cdots & \sigma_{dd}
+\end{array}\right]
 $$
+
+$$
+\Sigma=\left[\begin{array}{ccc}
+\sigma_1^2 & \cdots & 0 \\
+\vdots & \ddots & \vdots \\
+0 & \cdots & \sigma_d^2
+\end{array}\right]
+$$
+
 
 
 
@@ -391,7 +405,7 @@ $$
 가장 기본적인 커널함수 $K$ 는 다음과 같다.
 
 $$
-K(u)=\left\{\begin{array}{ll}
+K(u)= \left\ {\begin{array}{ll}
 1 & \left|u_j\right|<\frac{1}{2} \forall j=1, \ldots d \\
 0 & \text { otherwise }
 \end{array}\right\}
@@ -457,6 +471,7 @@ fig.subplots_adjust(hspace=0.5, wspace=.3);
 
 
 위 예시는 불연속적인 커널 함수 대신 가우시안 커널을 사용하여 추정을 한 결과이다. 가우시안 커널을 통한 밀도추정은 다음과 같이 나타낼 수 있다.
+
 $$
 p(x)=\frac{1}{N} \Sigma_{j=1}^n K\left(\frac{x-x_j}{h}\right)
 $$
