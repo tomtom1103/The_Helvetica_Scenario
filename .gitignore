@@ -6,3 +6,4 @@ kernel_based_learning/svm_test2.py
 *.ipynb_checkpoints
 anomaly_detection/anomaly_test.py
 *.csv
+ensemble_learning/ensemble_test.py
