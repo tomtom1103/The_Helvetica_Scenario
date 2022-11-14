@@ -7,3 +7,5 @@ kernel_based_learning/svm_test2.py
 anomaly_detection/anomaly_test.py
 *.csv
 ensemble_learning/ensemble_test.py
+ensemble_learning/ensemble_test2.py
+*.xlsx
