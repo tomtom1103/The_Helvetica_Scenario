@@ -469,7 +469,7 @@ fig.subplots_adjust(hspace=0.5, wspace=.3);
 
 위 예시는 불연속적인 커널 함수 대신 가우시안 커널을 사용하여 추정을 한 결과이다. 가우시안 커널을 통한 밀도추정은 다음과 같이 나타낼 수 있다.
 $$
-p(x)=\frac{1}{N} \Sigma_{j=1}^n K\left(\frac{x-x_j}{h}\right)
+p(x)=\frac{1}{N} \Sigma K\left(\frac{x-x_j}{h}\right)
 $$
 
 이때 smoothing parameter, 혹은 bandwidth $h$ 의 변화에 따른 결과를 볼 수 있다. Bandwidth 는 가우시안 커널 자체의 크기를 조절하는 파라미터로, 작을수록 각 객체가 특정 window 내에 위치할 확률을 계산할 때 주변 객체의 수가 줄어든다.
