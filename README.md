@@ -1,6 +1,6 @@
 # The Helvetica Scenario
 
-The Helvetica Scenario is a (soon to be) collection of algorithm codebases
+The Helvetica Scenario is a (soon to be) collection of tutorials
 that I've handwritten for the course [Business Analytics](https://github.com/pilsung-kang/Business-Analytics-IME654-)
 at Korea University.
 
@@ -8,20 +8,19 @@ at Korea University.
 
 ## 1. Dimensionality Reduction
 
-**Genetic Algorithm**
-\
-\
 This is the markdown for the first assignment: [Genetic Algorithm Markdown tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GA_tutorial.md).
-
-To run the Genetic Algorithm tutorial, clone/download the repository and run the [Genetic Algorithm Jupyter tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GA_tutorial.ipynb).
-
-The custom Class can be found in [Genetic Algorithm Class](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/genetic_algorithm/GeneticAlgorithm.py).
 
 --------------------------
 
 ## 2. Kernel Based Learning
 
 This is the markdown for the second assignment: [Support Vector Machine Tutorial](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/kernel_based_learning/SVM_tutorial.md).
+
+--------------------------
+
+## 3. Anomaly Detection
+
+This is the markdown for the third assignment: [Anomaly Detection](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/anomaly_detection/anomaly_detection_tutorial.md).
 
 
 
