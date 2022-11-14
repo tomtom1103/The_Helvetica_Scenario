@@ -397,11 +397,6 @@ $$
 가장 기본적인 커널함수 $K$ 는 다음과 같다.
 
 $$
-K(u)=\left\{\begin{array}{ll}
-1 & \left|u_j\right|<\frac{1}{2} \forall j=1, \ldots d \\
-0 & \text { otherwise }
-\end{array}\right\}
-
 K(u) = \\
 1 & \left|u_j\right|<\frac{1}{2} \forall j=1, \ldots d \\
 0 & \text {otherwise}
