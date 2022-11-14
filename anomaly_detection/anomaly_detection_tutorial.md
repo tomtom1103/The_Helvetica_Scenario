@@ -397,9 +397,15 @@ $$
 가장 기본적인 커널함수 $K$ 는 다음과 같다.
 
 $$
-K(u) = \\
-1 \text{if} \left|u_j\right|<\frac{1}{2} \forall j=1, \ldots d \\
-0 \text {otherwise}
+K(u) =
+$$
+
+$$
+1 \ \text{if} \ \left|u_j\right|<\frac{1}{2} \forall j=1, \ldots d
+$$
+
+$$
+0 \ \text {otherwise}
 $$
 
 즉, bandwidth $h$ 를 고정시킨 뒤 각 면의 길이가 $h$ 인 hypercube 가 데이터 공간을 sliding 하며, 커널 함수를 통해 hypercube 내부에 몇개의 객체 $k$ 가 위치하는지 찾는 것이 커널 밀도 추정의 목적이다.
