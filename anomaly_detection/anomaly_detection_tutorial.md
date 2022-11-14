@@ -171,8 +171,10 @@ $$
 정의할 가우시안의 개수 $m$ 은 hyperparameter이며, 데이터를 통해 $m$ 개의 가우시안의 fitting 을 진행한다.
 
 $$
-p(\mathbf{x} \mid \lambda)=\sum_{m=1}^M w_m g\left(\mathbf{x} \mid \boldsymbol{\mu}_m, \mathbf{\Sigma}_m\right)\\
+p(\mathbf{x} \mid \lambda)=\sum_{m=1}^M w_m g\left(\mathbf{x} \mid \boldsymbol{\mu}_m, \mathbf{\Sigma}_m\right)
+$$
 
+$$
 \lambda=\left\{w_m, \boldsymbol{\mu}_m, \mathbf{\Sigma}_m\right\}, \quad m=1, \cdots, M
 $$
 
@@ -260,7 +262,11 @@ plt.scatter(X[:, 0], X[:, 1], cmap='viridis');
 Full:
 
 $$
-\Sigma=\left[\begin{array}{ccc}\sigma_{11} & \cdots & \sigma_{1 d} \\ \vdots & \ddots & \vdots \\ \sigma_{d 1} & \cdots & \sigma_{d d}\end{array}\right]
+\Sigma=\left[\begin{array}{ccc}
+\sigma_{11} & \cdots & \sigma_{1 d} \\
+\vdots & \ddots & \vdots \\
+\sigma_{d 1} & \cdots & \sigma_{d d}
+\end{array}\right]
 $$
 
 
