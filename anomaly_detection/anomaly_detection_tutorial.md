@@ -14,6 +14,9 @@
 - [Isolation Forest](#isolation-forest)
     - [Training and Inference](#training-and-inference)
 
+
+#### The Jupyter file for this tutorial can be found [Here](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/anomaly_detection/anomaly_detection_tutorial.ipynb).
+
 ------------
 
 ## Overview
