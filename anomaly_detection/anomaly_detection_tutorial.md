@@ -175,7 +175,7 @@ p(\mathbf{x} \mid \lambda)=\sum_{m=1}^M w_m g\left(\mathbf{x} \mid \boldsymbol{\
 $$
 
 $$
-\lambda={w_m, \boldsymbol{\mu}_m, \mathbf{\Sigma}_m}, \quad m=1, \cdots, M
+\lambda= \{w_m, \boldsymbol{\mu}_m, \mathbf{\Sigma}_m \}, \quad m=1, \cdots, M
 $$
 
 가우시안들의 선형결합이 Fitting 이 된 후, 객체가 이 혼합 분포에서의 확률을 구하는 식은 위와 같다. 각 $m$ 개의 가우시안에 대한 확률을 구하는 것이 아니라, 가우시안들의 선형결합에서의 확률을 도출하는 것을 알 수 있다.
