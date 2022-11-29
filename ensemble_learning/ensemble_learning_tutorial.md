@@ -64,7 +64,7 @@ $$
 E_{(\mathbf{x},y) \sim P} \left[ \left(h_D (\mathbf{x}) - y \right)^2 \right] = \int\limits_x \! \! \int\limits_y \left( h_D(\mathbf{x}) - y\right)^2 \Pr(\mathbf{x},y) \partial y \partial \mathbf{x}.
 $$
 
-$D$ 라는 학습 데이터를 통해 알고리즘 $\mathcal{A}$ 를 학습시켰다고 가정하자 ($h_D = \mathcal{A}(D)$).  그렇다면 해당 모델 $h_D$ 의 Expected Test Error 은 (예시가 regression 이기 때문에 squared loss 사용) 위와 같이 구할 수 있다. $D$ 는 앞서 설명했듯이 random variable 로 취급할 수 있고, $h_D$ 는 $D$ 에 대한 function 이기 때문에 마찬가지로 random variable 이다.
+$D$ 라는 학습 데이터를 통해 알고리즘 $\mathcal{A}$ 를 학습시켰다고 가정하자 ( $h_D = \mathcal{A}(D)$ ).  그렇다면 해당 모델 $h_D$ 의 Expected Test Error 은 (예시가 regression 이기 때문에 squared loss 사용) 위와 같이 구할 수 있다. $D$ 는 앞서 설명했듯이 random variable 로 취급할 수 있고, $h_D$ 는 $D$ 에 대한 function 이기 때문에 마찬가지로 random variable 이다.
 
 **Expected Classifier (given $\mathcal{A}$):**
 
@@ -119,7 +119,7 @@ E_{\mathbf{x}, y} \left[ \left(\bar{h}(\mathbf{x}) - y \right)^{2}\right] = E_{\
 $$
 
 $$
-=\underbrace{E_{\mathbf{x}, y} \left[\left(\bar{y}(\mathbf{x}) - y\right)^{2}\right]}_\mathrm{Noise^1} + \underbrace{E_{\mathbf{x}} \left[\left(\bar{h}(\mathbf{x}) - \bar{y}(\mathbf{x})\right)^{2}\right]}_\mathrm{Bias^2}
+=\underbrace{E_{\mathbf{x}, y} \left[\left(\bar{y}(\mathbf{x}) - y\right)^{2}\right]}_\mathrm{Noise} + \underbrace{E_{\mathbf{x}} \left[\left(\bar{h}(\mathbf{x}) - \bar{y}(\mathbf{x})\right)^{2}\right]}_\mathrm{Bias^2}
 $$
 
 $$
@@ -133,7 +133,7 @@ $$
 $$
 
 $$
-= \underbrace{E_{\mathbf{x}, D}\left[\left(h_{D}(\mathbf{x}) - \bar{h}(\mathbf{x})\right)^{2}\right]}_\mathrm{Variance^1} + \underbrace{E_{\mathbf{x}, y}\left[\left(\bar{y}(\mathbf{x}) - y\right)^{2}\right]}_\mathrm{Noise^1} + \underbrace{E_{\mathbf{x}}\left[\left(\bar{h}(\mathbf{x}) - \bar{y}(\mathbf{x})\right)^{2}\right]}_\mathrm{Bias^2}
+= \underbrace{E_{\mathbf{x}, D}\left[\left(h_{D}(\mathbf{x}) - \bar{h}(\mathbf{x})\right)^{2}\right]}_\mathrm{Variance} + \underbrace{E_{\mathbf{x}, y}\left[\left(\bar{y}(\mathbf{x}) - y\right)^{2}\right]}_\mathrm{Noise} + \underbrace{E_{\mathbf{x}}\left[\left(\bar{h}(\mathbf{x}) - \bar{y}(\mathbf{x})\right)^{2}\right]}_\mathrm{Bias^2}
 $$
 
 **즉, Bias-Variance decomposition 은 한 머신러닝 알고리즘의 expected test error (혹은 성능) 은 3개의 요인으로 나누어 설명할 수 있음을 의미한다. 한개의 모델이 다른 모델들과 얼마나 다른지를 설명하는 Variance, 전체 모델들의 평균 예측치와 실제값들의 평균의 차를 나타내는 Bias (평균 성능이라고 봐도 무방하다), 그리고 설명할 수 없는 data intrinsic 한 noise 의 합으로 하나의 모델의 성능을 나타낼 수 있다.**
