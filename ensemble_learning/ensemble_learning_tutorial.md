@@ -61,7 +61,7 @@ i.i.d 로 추출한 수많은 데이터셋들에 대해 모델을 학습시킨 �
 **Expected Test Error (given $h_D$):**
 
 $$
-E_{(\mathbf{x},y) \sim P} \left[ \left(h_D (\mathbf{x}) - y \right)^2 \right] = \int\limits_x \! \! \int\limits_y \left( h_D(\mathbf{x}) - y\right)^2 \Pr(\mathbf{x},y) \partial y \partial \mathbf{x}.
+E_{(\mathbf{x},y) \sim P} \left[ \left(h_D (\mathbf{x}) - y \right)^2 \right] = \int\limits_x \int\limits_y \left( h_D(\mathbf{x}) - y\right)^2 \Pr(\mathbf{x},y) \partial y \partial \mathbf{x}.
 $$
 
 $D$ 라는 학습 데이터를 통해 알고리즘 $\mathcal{A}$ 를 학습시켰다고 가정하자 ( $h_D = \mathcal{A}(D)$ ).  그렇다면 해당 모델 $h_D$ 의 Expected Test Error 은 (예시가 regression 이기 때문에 squared loss 사용) 위와 같이 구할 수 있다. $D$ 는 앞서 설명했듯이 random variable 로 취급할 수 있고, $h_D$ 는 $D$ 에 대한 function 이기 때문에 마찬가지로 random variable 이다.
