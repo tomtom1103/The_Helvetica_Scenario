@@ -123,7 +123,7 @@ $$
 $$
 
 $$
-+ 2 \mathrm{\;} E_{\mathbf{x}, y} \left[ \left(\bar{h}(\mathbf{x}) - \bar{y}(\mathbf{x})\right)\left(\bar{y}(\mathbf{x}) - y\right)\right] 
+{+2} \mathrm{\;} E_{\mathbf{x}, y} \left[ \left(\bar{h}(\mathbf{x}) - \bar{y}(\mathbf{x})\right)\left(\bar{y}(\mathbf{x}) - y\right)\right] 
 $$
 
 동일하게 $2ab$ 부분은 사라지기 때문에, 최종적으로 expected test error 의 decomposition 은 다음과 같아진다:
