@@ -1031,9 +1031,9 @@ plt.xlabel("Random Forest Feature Importance");
     
 
 
-**Step 1:** Population (앙상블을 구성하는 개별 모델) 에 대해 OOB error ($e_i$) 를 계산한다.
+**Step 1:** Population (앙상블을 구성하는 개별 모델) 에 대해 OOB error ( $e_i$ ) 를 계산한다.
 
-**Step 2:** 중요도를 구하고자 하는 설명변수 $x_i$ 의 값들에 대해 random permutation 을 진행 후, permutated OOB error ($p_i$) 를 계산한다.
+**Step 2:** 중요도를 구하고자 하는 설명변수 $x_i$ 의 값들에 대해 random permutation 을 진행 후, permutated OOB error ( $p_i$ ) 를 계산한다.
 
 **Step 3:** Population 에 대해 $p_i - e_i$ 의 평균과 분산을 구한 뒤, 변수의 중요도를 산출한다.
 
