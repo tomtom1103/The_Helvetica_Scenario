@@ -26,7 +26,7 @@ This is the markdown for the third assignment: [Anomaly Detection](https://githu
 
 ## 4. Ensemble Learning
 
-This is the markdown for the third assignment: [Ensemble Learning](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/ensemble_learning/ensemble_learning_tutorial.md).
+This is the markdown for the fourth assignment: [Ensemble Learning](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/ensemble_learning/ensemble_learning_tutorial.md).
 
 --------------------------
 The name 'Helvetica Scenario' derives from Ian Goodfellow's reference of the educational spoof 'Look Around You' in his 2014 GAN paper.
