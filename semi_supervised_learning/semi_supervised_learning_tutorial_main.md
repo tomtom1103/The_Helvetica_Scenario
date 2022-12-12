@@ -1,9 +1,17 @@
 # Semi-Supervised Learning
 
 ## Contents
+- [Introduction](#introduction)
+- [Consistency Regularization Methods](#consistency-regularization-methods)
+    - [Pi-Model](#pi-model)
+        - [Training of the Pi-Model](#training-of-the-pi-model)
+        - [Pi-Model: Code Implementation](#pi-model-code-implementation)
+        - [Limitations of the Pi-Model](#limitations-of-the-pi-model)
+    - [Temporal Ensembling](#temporal-ensembling)
+    - [Temporal Ensembling: Code Implementation](#temporal-ensembling-code-implementation)
 
 The Datasets used for this tutorial can be found here:
-
+- [FashionMNIST](https://github.com/zalandoresearch/fashion-mnist)
 
 --------
 
