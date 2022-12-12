@@ -18,7 +18,7 @@ The Datasets used for this tutorial can be found here:
 ## Introduction
 
 <p align="center">
-    <img src="semi_supervised_images/ssl1.png" width="400"/>
+    <img src="semi_supervised_images/ssl1.png" width="1000"/>
 </p>
 
 Semi Supervised Learning, 즉 준지도학습은 적은 양의 labeled 데이터와 많은 양의 unlabeled 데이터가 있다면 unlabeled 데이터 까지 활용하여 모델을 학습하는 방법론들의 집합이다.
@@ -61,7 +61,7 @@ Consistency Regularization Methods 는 이미지 도메인에서 많이 쓰이�
 
 
 <p align="center">
-    <img src="semi_supervised_images/piarchitecture.png" width="400"/>
+    <img src="semi_supervised_images/piarchitecture.png" width="1000"/>
 </p>
 
 Pi Model 은 2017년 ICLR 에서 소개된 방법론이며, Consistency Regularization 의 큰 개념을 설명하는데 가장 적합하다 판단하여 먼저 다루고자 한다.
@@ -1037,7 +1037,7 @@ Unsupervised loss 는 모델의 두 output $(z_i, \tilde{z_i})$ 에 대해 계�
 ### Temporal Ensembling
 
 <p align="center">
-    <img src="semi_supervised_images/tempensarchitecture.png" width="400"/>
+    <img src="semi_supervised_images/tempensarchitecture.png" width="1000"/>
 </p>
 
 
