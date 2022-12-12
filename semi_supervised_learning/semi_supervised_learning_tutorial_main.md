@@ -286,7 +286,7 @@ max_epochs = 100
 max_val = 1.
 mult = 5
 
-x = np.arange(0, 100)
+x = np.arange(0, 80)
 y = [weight_scheduler(i, max_epochs, max_val, mult, 100, 60000) for i in x]
 plt.figure(figsize=(7, 5))
 plt.plot(x, y)
@@ -301,9 +301,15 @@ plt.title('Weight scheduler');
     
 
 
-Weight ramp up function 은 시작을 0으로 Epoch 이 진행될수록 단조증가하는 함수이다. 
+Weight ramp up function 은 시작을 0으로 Epoch 이 진행될수록 단조증가하는 함수로, 논문 저자들이 사용한 function 을 사용하였다.
 
-$\exp(-(1 - \frac{epoch}{maxepochs})^2)$
+<p align="center">
+    <img src="semi_supervised_images/rampup.png" width="1000"/>
+</p>
+
+$$
+\exp[-(5 - \frac{epoch}{maxepochs})^2]
+$$
 
 
 ```python
@@ -383,7 +389,7 @@ max_val = 1.
 optimizer = torch.optim.Adam(model.parameters(), lr=lr, betas=(0.9, 0.99))
 ```
 
-학습을 위한 모델 파라미터는 위와 같이 설정하였다. 본 논문에서 사용 한 것 처럼 ADAM 을 optimizer 로 사용하였으며, 50 epoch 을 학습 기간으로 설정하였다.
+학습을 위한 모델 파라미터는 위와 같이 설정하였다. 본 논문에서 사용 한 것 처럼 momentum parameter $\beta_1 = 0.9, \beta_2 = 0.999$ 로 설정한 ADAM 을 optimizer 로 사용하였으며, 50 epoch 을 학습 기간으로 설정하였다.
 
 
 ```python
