@@ -28,6 +28,8 @@ This is the markdown for the third assignment: [Anomaly Detection](https://githu
 
 This is the markdown for the fourth assignment: [Ensemble Learning](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/ensemble_learning/ensemble_learning_tutorial.md).
 
+--------------------------
+
 ## 5. Semi Supervised Learning
 
 This is the markdown for the fifth assignment: [Semi Supervised Learning](https://github.com/tomtom1103/The_Helvetica_Scenario/blob/main/semi_supervised_learning/semi_supervised_learning_tutorial_main.md).
