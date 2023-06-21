@@ -1,6 +1,6 @@
 # The Helvetica Scenario
 
-The Helvetica Scenario is a (soon to be) collection of tutorials
+The Helvetica Scenario is a collection of tutorials
 that I've handwritten for the course [Business Analytics](https://github.com/pilsung-kang/Business-Analytics-IME654-)
 at Korea University.
 
